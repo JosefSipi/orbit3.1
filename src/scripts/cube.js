@@ -22,6 +22,7 @@ export const Cube = function(x, y, z, size) {
 
     this.faces = [[0, 1, 2, 3], [0, 4, 5, 1], [1, 5, 6, 2], [3, 2, 6, 7], [0, 3, 7, 4], [4, 7, 6, 5]];
 
+    
 };
 
 
