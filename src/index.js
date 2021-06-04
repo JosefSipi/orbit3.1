@@ -1,57 +1,32 @@
 import './styles/index.scss';
+import { Cube, Point2D } from './scripts/cube';
 
 
-
-
-
-const Point2D = function(x, y) {this.x = x; this.y = y;};
-
-const Point3D = function(x, y, z) { this.x = x; this.y = y; this.z = z;};
-
-
-const Cube = function(x, y, z, size) {
-
-    Point3D.call(this, x, y, z);
-
-    size *= 0.5;
-
-    this.vertices = [
-        new Point3D(x - size, y - size, z - size),
-        new Point3D(x + size, y - size, z - size),
-        new Point3D(x + size, y + size, z - size),
-        new Point3D(x - size, y + size, z - size),
-        new Point3D(x - size, y - size, z + size),
-        new Point3D(x + size, y - size, z + size),
-        new Point3D(x + size, y + size, z + size),
-        new Point3D(x - size, y + size, z + size)
-    ];
-
-    this.faces = [[0, 1, 2, 3], [0, 4, 5, 1], [1, 5, 6, 2], [3, 2, 6, 7], [0, 3, 7, 4], [4, 7, 6, 5]];
-
-};
-
-
-var cube = new Cube( 0, 0, 400, 200);
+var cube = new Cube( 0, 0, 200, 100);
 
 var context = document.querySelector('canvas').getContext('2d');
 
-// const body = document.body;
 
-// const canvas = document.createElement('canvas');
-// canvas.getContext("2d");
-// canvas.classList.add('canvas-grid');
-
-function project(points3d, width, height) {
+function project(points3d, width, height, changeX, changeY) {
+// debugger
     var points2d = new Array(points3d.length);
 
     var focal_length = 200;
 
-    for (let index = points3d.length - 1; index > -1; -- index) {
-        
-        let p = points3d[index];
+    const canvasWidthNow = document.getElementById("canvas-grid").width;
 
-        let x = p.x * ( focal_length / p.z) + width * 0.5;
-        let y = p.y * ( focal_length /p.z) + height * 0.5;
+    let cubeStep = (canvasWidthNow / 100);
+
+    for (let index = points3d.length - 1; index > -1; -- index) {
+
+        let p = points3d[index];
+// increase each iteration by 202
+        // let x = p.x * ( focal_length / p.z) + 68 + changeX;
+        // let y = p.y * ( focal_length /p.z) + 68 + changeY;
+        let x = p.x * ( focal_length / p.z);
+        let y = p.y * ( focal_length /p.z);
+        // let x = p.x * ( focal_length / p.z) + width * 0.05;
+        // let y = p.y * ( focal_length /p.z) + height * 0.05;
 
         points2d[index] = new Point2D(x, y);
     }
@@ -61,8 +36,21 @@ function project(points3d, width, height) {
 
 
 function loop(){
-    // window.requestAnimationFrame(loop);
 
+    window.requestAnimationFrame(loop);
+    // debugger
+    var canvasGridEle = document.body.querySelector('.canvas-grid'),
+        gridLeft = canvasGridEle.offsetLeft + canvasGridEle.clientLeft,
+        gridTop = canvasGridEle.offsetTop + canvasGridEle.clientTop,
+        newContext = canvasGridEle.getContext('2d'),
+        elements = [];
+
+    canvasGridEle.addEventListener('click', function(event){
+        debugger
+    });
+
+
+    var eleHeight = canvasGridEle.offsetHeight;
     var height = document.documentElement.clientHeight;
     var width = height;
     // var width = document.documentElement.clientWidth;
@@ -72,11 +60,33 @@ function loop(){
 
     context.strokeStyle = 'black';
 
+// need to loop throught each cube
+
+// for (let changeX = 202; changeX < width; ++ changeX){
+//     for (let changeY = 202; changeX < width; ++ changeX){
+//         let cube =
+
+//     }
+// }
+
+    // with each cube we project we want to 
+            // indicate whether it's selected or not
+            // it's position on the canvas
+
+    // --- this will be referencing and iterating through a hash if all cubes on screen ---
     var vertices = project(cube.vertices, width, height);
+    // ---- -------- ------ 
+    // debugger
+
+    context.beginPath();
+    context.moveTo(400, 400);
+    context.lineTo(313, 313);
+    context.closePath();
+    context.stroke();
 
     for (let index = cube.faces.length - 1; index > -1; -- index) {
         let face = cube.faces[index];
-
+        // debugger
         context.beginPath();
         context.moveTo(vertices[face[0]].x, vertices[face[0]].y);
         context.lineTo(vertices[face[1]].x, vertices[face[1]].y);
@@ -87,6 +97,8 @@ function loop(){
 
 
     }
+
+
 }
 
 loop();

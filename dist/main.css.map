@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://orbit3.0/./src/styles/index.scss"],"names":[],"mappings":"AACA,aAGI,YACA,WACA,yB","file":"main.css","sourcesContent":["\n.canvas-grid{\n\n\n    height: 50vw;\n    width: 50vw;\n    background-color: rgb(209, 209, 209);\n}"],"sourceRoot":""}
