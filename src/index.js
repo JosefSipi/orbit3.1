@@ -46,7 +46,7 @@ function loop(){
         elements = [];
 
     canvasGridEle.addEventListener('click', function(event){
-        debugger
+        // debugger
     });
 
 
