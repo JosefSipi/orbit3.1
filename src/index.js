@@ -1,10 +1,11 @@
-import './styles/index.scss';
+// import './styles/index.scss';
 import { Cube, Point2D } from './scripts/cube';
 
 
 var cube = new Cube( 0, 0, 200, 100);
 
 var context = document.querySelector('canvas').getContext('2d');
+
 
 
 function project(points3d, width, height, changeX, changeY) {
@@ -23,8 +24,8 @@ function project(points3d, width, height, changeX, changeY) {
 // increase each iteration by 202
         // let x = p.x * ( focal_length / p.z) + 68 + changeX;
         // let y = p.y * ( focal_length /p.z) + 68 + changeY;
-        let x = p.x * ( focal_length / p.z);
-        let y = p.y * ( focal_length /p.z);
+        let x = p.x * ( focal_length / p.z) + 67;
+        let y = p.y * ( focal_length /p.z) + 67;
         // let x = p.x * ( focal_length / p.z) + width * 0.05;
         // let y = p.y * ( focal_length /p.z) + height * 0.05;
 
@@ -39,14 +40,14 @@ function loop(){
 
     window.requestAnimationFrame(loop);
     // debugger
-    var canvasGridEle = document.body.querySelector('.canvas-grid'),
+    var canvasGridEle = document.body.querySelector('canvas'),
         gridLeft = canvasGridEle.offsetLeft + canvasGridEle.clientLeft,
         gridTop = canvasGridEle.offsetTop + canvasGridEle.clientTop,
         newContext = canvasGridEle.getContext('2d'),
         elements = [];
 
     canvasGridEle.addEventListener('click', function(event){
-        // debugger
+        debugger
     });
 
 
@@ -57,6 +58,7 @@ function loop(){
 
     context.canvas.height = height;
     context.canvas.width = width;
+
 
     context.strokeStyle = 'black';
 
@@ -77,12 +79,6 @@ function loop(){
     var vertices = project(cube.vertices, width, height);
     // ---- -------- ------ 
     // debugger
-
-    context.beginPath();
-    context.moveTo(400, 400);
-    context.lineTo(313, 313);
-    context.closePath();
-    context.stroke();
 
     for (let index = cube.faces.length - 1; index > -1; -- index) {
         let face = cube.faces[index];
