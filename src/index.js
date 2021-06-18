@@ -47,8 +47,6 @@ function init(x, y, z) {
         // ----- change position on screen ---
         // newCube.position.set(x, y, z)
         newCube.position.set(i, j, );
-
-
         // --------
 
         // newCube.rotation.x += x;
