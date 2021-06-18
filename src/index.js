@@ -1,104 +1,88 @@
-// import './styles/index.scss';
-import { Cube, Point2D } from './scripts/cube';
+// import { render } from 'sass';
+import * as THREE from 'three';
+
+let scene, camera, renderer, cube;
+
+// let group = new THREE.Object3D();
+
+function init(x, y, z) {
+
+    scene = new THREE.Scene();
+    
+    camera = new THREE.PerspectiveCamera( 
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+     );
+
+    // let viewSize = 900;
+
+    // let aspectRatio = (window.innerWidth * .75 )/(window.innerHeight * .75)
+    // camera = new THREE.OrthographicCamera( -aspectRatio * viewSize / 2, aspectRatio * viewSize / 2, viewSize / 2, -viewSize / 2, -1000, 1000);
+
+    renderer = new THREE.WebGLRenderer();
+    
+    renderer.setSize((window.innerWidth * .75), (window.innerHeight * .75));
+    
+    document.body.appendChild(renderer.domElement);
+    
+    window.addEventListener('resize', () => {
+        renderer.setSize((window.innerWidth * .75), (window.innerHeight * .75));
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+    })
+
+    for (let i = 0; i < 20; i++){
+        for (let j = 0; j < 20; j++){
+            // for (let k = 0; k < 20; k++){    
+
+        const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+        
+        const material = new THREE.MeshBasicMaterial( {color: 0x0000ff} );
+        cube = new THREE.Mesh( geometry, material );
+        const newCube = new THREE.EdgesHelper( cube, 0xffffff)
+        newCube.material.linewidth = 1;
+        scene.add( newCube );
+        // ----- change position on screen ---
+        // newCube.position.set(x, y, z)
+        newCube.position.set(i, j, );
 
 
-var cube = new Cube( 0, 0, 200, 100);
+        // --------
 
-var context = document.querySelector('canvas').getContext('2d');
-
-
-
-function project(points3d, width, height, changeX, changeY) {
-// debugger
-    var points2d = new Array(points3d.length);
-
-    var focal_length = 200;
-
-    const canvasWidthNow = document.getElementById("canvas-grid").width;
-
-    let cubeStep = (canvasWidthNow / 100);
-
-    for (let index = points3d.length - 1; index > -1; -- index) {
-
-        let p = points3d[index];
-// increase each iteration by 202
-        // let x = p.x * ( focal_length / p.z) + 68 + changeX;
-        // let y = p.y * ( focal_length /p.z) + 68 + changeY;
-        let x = p.x * ( focal_length / p.z) + 67;
-        let y = p.y * ( focal_length /p.z) + 67;
-        // let x = p.x * ( focal_length / p.z) + width * 0.05;
-        // let y = p.y * ( focal_length /p.z) + height * 0.05;
-
-        points2d[index] = new Point2D(x, y);
+        // newCube.rotation.x += x;
+        // newCube.rotation.y += .5;
+            // }
+        }
     }
+    
+    camera.position.z = 15;
+    camera.position.y = 9.5;
+    camera.position.x = 9.5;
 
-    return points2d;
+    // const controls = new OrbitControls( camera, renderer.domElement);
+    // controls.en
+    // controls.update();
+    
 }
 
 
-function loop(){
 
-    window.requestAnimationFrame(loop);
-    // debugger
-    var canvasGridEle = document.body.querySelector('canvas'),
-        gridLeft = canvasGridEle.offsetLeft + canvasGridEle.clientLeft,
-        gridTop = canvasGridEle.offsetTop + canvasGridEle.clientTop,
-        newContext = canvasGridEle.getContext('2d'),
-        elements = [];
+function animate() {
 
-    canvasGridEle.addEventListener('click', function(event){
-        debugger
-    });
+    requestAnimationFrame(animate);
 
-
-    var eleHeight = canvasGridEle.offsetHeight;
-    var height = document.documentElement.clientHeight;
-    var width = height;
-    // var width = document.documentElement.clientWidth;
-
-    context.canvas.height = height;
-    context.canvas.width = width;
-
-
-    context.strokeStyle = 'black';
-
-// need to loop throught each cube
-
-// for (let changeX = 202; changeX < width; ++ changeX){
-//     for (let changeY = 202; changeX < width; ++ changeX){
-//         let cube =
-
-//     }
-// }
-
-    // with each cube we project we want to 
-            // indicate whether it's selected or not
-            // it's position on the canvas
-
-    // --- this will be referencing and iterating through a hash if all cubes on screen ---
-    var vertices = project(cube.vertices, width, height);
-    // ---- -------- ------ 
-    // debugger
-
-    for (let index = cube.faces.length - 1; index > -1; -- index) {
-        let face = cube.faces[index];
-        // debugger
-        context.beginPath();
-        context.moveTo(vertices[face[0]].x, vertices[face[0]].y);
-        context.lineTo(vertices[face[1]].x, vertices[face[1]].y);
-        context.lineTo(vertices[face[2]].x, vertices[face[2]].y);
-        context.lineTo(vertices[face[3]].x, vertices[face[3]].y);
-        context.closePath();
-        context.stroke();
-
-
-    }
+    // newCube.rotation.x += 0.01;
+    
+    renderer.render(scene, camera);
 
 
 }
-
-loop();
-
+    
+    
+init(3);
+animate();
 
 
 
