@@ -36,7 +36,7 @@ let scene, camera, renderer, cube;
         camera.updateProjectionMatrix();
     })
 
-// ----
+// -----
     var raycaster = new THREE.Raycaster();
     var mouse = new THREE.Vector2();
 
@@ -79,6 +79,11 @@ let scene, camera, renderer, cube;
 // controls.en
 // controls.update();
 
+var onClick = function(event){
+    event.preventDefault();
+    
+}
+
 
 function animate() {
 
@@ -86,8 +91,9 @@ function animate() {
     
     controls.update();
     // newCube.rotation.x += 0.01;
+
     renderer.render(scene, camera);
-    
+    window.addEventListener('click', onClick)
     
 }
 
