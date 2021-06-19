@@ -1,5 +1,8 @@
 // import { render } from 'sass';
+import oc from 'three-orbit-controls';
 import * as THREE from 'three';
+
+var OrbitControls = oc(THREE);
 
 let scene, camera, renderer, cube;
 
@@ -33,9 +36,9 @@ function init(x, y, z) {
         camera.updateProjectionMatrix();
     })
 
-    for (let i = 0; i < 20; i++){
-        for (let j = 0; j < 20; j++){
-            // for (let k = 0; k < 20; k++){    
+    for (let i = 0; i < 10; i++){
+        for (let j = 0; j < 10; j++){
+            for (let k = 0; k < 10; k++){    
 
         const geometry = new THREE.BoxGeometry( 1, 1, 1 );
         
@@ -46,25 +49,25 @@ function init(x, y, z) {
         scene.add( newCube );
         // ----- change position on screen ---
         // newCube.position.set(x, y, z)
-        newCube.position.set(i, j, );
+        newCube.position.set(i, j, k);
         // --------
 
-        // newCube.rotation.x += x;
+        // newCube.rotation.x += .5;
         // newCube.rotation.y += .5;
-            // }
+            }
         }
     }
     
     camera.position.z = 15;
     camera.position.y = 9.5;
     camera.position.x = 9.5;
+    
 
-    // const controls = new OrbitControls( camera, renderer.domElement);
-    // controls.en
-    // controls.update();
+    const controls =  new OrbitControls(camera, renderer.domElement)
     
 }
-
+// controls.en
+// controls.update();
 
 
 function animate() {
@@ -81,7 +84,3 @@ function animate() {
     
 init(3);
 animate();
-
-
-
-

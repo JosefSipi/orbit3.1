@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "resolve-url-loader": "^4.0.0",
-    "three": "^0.129.0"
+    "three": "^0.129.0",
+    "three-orbit-controls": "^82.1.0"
   }
 }
