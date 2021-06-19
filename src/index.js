@@ -8,7 +8,7 @@ let scene, camera, renderer, cube;
 
 // let group = new THREE.Object3D();
 
-function init(x, y, z) {
+// function init(x, y, z) {
 
     scene = new THREE.Scene();
     
@@ -36,9 +36,15 @@ function init(x, y, z) {
         camera.updateProjectionMatrix();
     })
 
-    for (let i = 0; i < 10; i++){
-        for (let j = 0; j < 10; j++){
-            for (let k = 0; k < 10; k++){    
+// ----
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+
+// ------
+
+    for (let i = 0; i < 20; i++){
+        for (let j = 0; j < 20; j++){
+            for (let k = 0; k < 20; k++){    
 
         const geometry = new THREE.BoxGeometry( 1, 1, 1 );
         
@@ -58,14 +64,18 @@ function init(x, y, z) {
         }
     }
     
-    camera.position.z = 15;
+    camera.position.z = 40;
     camera.position.y = 9.5;
     camera.position.x = 9.5;
-    
+    // camera.lookAt(9.5, 0, 9.5)
 
-    const controls =  new OrbitControls(camera, renderer.domElement)
-    
-}
+    var controls =  new OrbitControls(camera, renderer.domElement)
+    controls.target.set(9.5, 9.5, 9.5)
+    // controls.minZoom(1);
+    // controls.maxZoom(100);
+    controls.enableDamping = true;
+
+// }
 // controls.en
 // controls.update();
 
@@ -73,14 +83,13 @@ function init(x, y, z) {
 function animate() {
 
     requestAnimationFrame(animate);
-
+    
+    controls.update();
     // newCube.rotation.x += 0.01;
-    
     renderer.render(scene, camera);
-
-
+    
+    
 }
-    
-    
-init(3);
+
+// init();
 animate();
