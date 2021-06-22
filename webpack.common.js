@@ -13,6 +13,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".js"], // if we were using React.js, we would include ".jsx"
+      //     fallback: {
+      //   util: require.resolve("util/")
+      // }
   },
   module: {
     rules: [
