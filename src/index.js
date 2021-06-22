@@ -1,7 +1,6 @@
-// import { render } from 'sass';
 import oc from 'three-orbit-controls';
 import * as THREE from 'three';
-// import { debug } from 'webpack';
+
 
 var OrbitControls = oc(THREE);
 var amount = 20;
@@ -12,7 +11,6 @@ var scene, camera, renderer, newCube;
 var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
 
-// let group = new THREE.Object3D();
 
 function init() {
 
@@ -26,14 +24,11 @@ function init() {
      );
 
     camera.lookAt(0, 0, 0);
-    // let viewSize = 900;
-
-    // let aspectRatio = (window.innerWidth * .75 )/(window.innerHeight * .75)
-    // camera = new THREE.OrthographicCamera( -aspectRatio * viewSize / 2, aspectRatio * viewSize / 2, viewSize / 2, -viewSize / 2, -1000, 1000);
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
     
     // renderer.setSize((window.innerWidth), (window.innerHeight ));
+    // debugger
     renderer.setSize((window.innerWidth * .75), (window.innerHeight * .75));
     
     document.body.appendChild(renderer.domElement);
@@ -73,28 +68,12 @@ const matrix = new THREE.Matrix4();
 
                 m ++;
                 
-        // const newCube = new THREE.EdgesHelper( cube, 0xffffff)
-        // newCube.material.linewidth = 1;
-
-        // scene.add( newCube );
-
-        
-        // ----- change position on screen ---
-        // newCube.position.set(x, y, z)
-
-
-        // ----just changed this line below----
-        // newCube.position.set(i, j, k);
-        // --------
-
-        // newCube.rotation.x += .5;
-        // newCube.rotation.y += .5;
             }
         }
     }
 
     scene.add(newCube);
-    camera.position.z = 15;
+    camera.position.z = amount + amount / 2;
     let controls =  new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true;
 
@@ -108,14 +87,17 @@ const matrix = new THREE.Matrix4();
 var onClick = function(event) {
     event.preventDefault();
 
-
+    // debugger
 	mouse.x = ( event.clientX / (window.innerWidth * .75)) * 2 - 1;
 	mouse.y = - ( event.clientY / (window.innerHeight * .75)) * 2 + 1;
+	// mouse.x = ( event.clientX / (window.innerWidth * .75)) * 2 - 1;
+	// mouse.y = - ( event.clientY / (window.innerHeight * .75)) * 2 + 1;
 
     raycaster.setFromCamera( mouse, camera );
     
     const intersection = raycaster.intersectObjects( scene.children, true );
-    const color2 = new THREE.Color( 0x00ff00 );
+    const color2 = new THREE.Color( 'yellow' );
+
     if ( intersection.length > 0 ) {
 
         const instanceId = intersection[ 0 ].instanceId;
@@ -141,25 +123,6 @@ function animate() {
 function render(){
     
     
-    // raycaster.setFromCamera( mouse, camera );
-    
-    // const intersection = raycaster.intersectObjects( newCube );
-
-    // if ( intersection.length > 0 ) {
-
-    //     const instanceId = intersection[ 0 ].instanceId;
-
-    //     newCube.setColorAt( instanceId, color.setHex( 0x47d147 ) );
-    //     newCube.instanceColor.needsUpdate = true;
-
-    // }
-    
-	// // for ( let i = 0; i < intersects.length; i ++ ) {
-        
-    // //     intersects[ i ].object.material.color.set( 0xff0000 );
-        
-	// // }
-    
     renderer.render(scene, camera);
 
 
@@ -167,3 +130,9 @@ function render(){
 
 init();
 animate();
+
+
+// document.getElementsByTagName('canvas').padding = "12px";
+// canvasEl.className = "canvas";
+
+// canvasEl.style.border = "12px solid green";
