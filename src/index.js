@@ -1,24 +1,31 @@
 import oc from 'three-orbit-controls';
 import * as THREE from 'three';
 
+const { build } = require('../src/scripts/build');
+
 
 var OrbitControls = oc(THREE);
-var amount = 20;
+var amount = 30;
 var count = Math.pow( amount, 3 )
 
 var scene, camera, renderer, newCube;
 
 var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
+var canvas;
 
+// document.addEventListener
+// var canvas = window.body.querySelector('canvas');
 
 function init() {
 
     scene = new THREE.Scene();
-    
     camera = new THREE.PerspectiveCamera( 
         75,
         window.innerWidth / window.innerHeight,
+
+        // document.body.querySelector('canvas').width
+
         0.1,
         1000
      );
@@ -28,21 +35,23 @@ function init() {
     renderer = new THREE.WebGLRenderer({ antialias: true });
     
     // renderer.setSize((window.innerWidth), (window.innerHeight ));
-    // debugger
-    renderer.setSize((window.innerWidth * .75), (window.innerHeight * .75));
-    
+    renderer.setSize((window.innerWidth), (window.innerHeight));
+
     document.body.appendChild(renderer.domElement);
-    
+    canvas = document.querySelector('canvas');
+
     window.addEventListener('resize', () => {
         // renderer.setSize((window.innerWidth), (window.innerHeight ));
-        renderer.setSize((window.innerWidth * .75), (window.innerHeight * .75));
-        camera.aspect = window.innerWidth / window.innerHeight;
+        renderer.setSize((window.innerWidth), (window.innerHeight));
+        camera.aspect = canvas.width / canvas.height;
+        // camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
     })
 
 
 // -------------------------------original loop -----------------------------------------
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+
 
 const material = new THREE.MeshBasicMaterial({color: 0x0000ff});
 material.wireframe = true;
@@ -87,9 +96,8 @@ const matrix = new THREE.Matrix4();
 var onClick = function(event) {
     event.preventDefault();
 
-    // debugger
-	mouse.x = ( event.clientX / (window.innerWidth * .75)) * 2 - 1;
-	mouse.y = - ( event.clientY / (window.innerHeight * .75)) * 2 + 1;
+	mouse.x = ( event.clientX / (window.innerWidth)) * 2 - 1;
+	mouse.y = - ( event.clientY / (window.innerHeight)) * 2 + 1;
 	// mouse.x = ( event.clientX / (window.innerWidth * .75)) * 2 - 1;
 	// mouse.y = - ( event.clientY / (window.innerHeight * .75)) * 2 + 1;
 
@@ -121,18 +129,9 @@ function animate() {
 }
 
 function render(){
-    
-    
     renderer.render(scene, camera);
-
-
 }
 
 init();
 animate();
-
-
-// document.getElementsByTagName('canvas').padding = "12px";
-// canvasEl.className = "canvas";
-
-// canvasEl.style.border = "12px solid green";
+build();
