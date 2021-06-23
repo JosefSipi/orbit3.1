@@ -48,8 +48,6 @@ gitHub.className = "git-hub-tag";
 gitHub.textContent = "gitHub"
 divfooter.appendChild(gitHub);
 
-
-
 // -------------- footer -------------------------------I
 
 
