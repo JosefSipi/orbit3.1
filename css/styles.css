@@ -1,22 +1,119 @@
 /* canvas {
     border: 12px solid green;
 } */
-
+ /* -------------- header -------------------------------I */
+canvas {
+    overflow-y: hidden;
+ }
+ body {
+     overflow-y: hidden;
+ }
 header {
     position: absolute;
     top: 0px;
     left: 0px;
-    border: 1px white solid;
+    /* border: 1px white solid; */
     width: 100%;
     height: 20px;
 
     color: white;
+    font-family: 'Raleway', sans-serif;
 }
 
 header div {
+    font-family: 'Raleway', sans-serif;
     position: inherit;
     display: flex;
-    height: 10vh;
+    height: 15vh;
     width: inherit;
-    border: 1px white dashed;
+    /* border: 1px white dashed; */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.091);
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(24, 24, 24, 0.338);
+    backdrop-filter: blur(8px);
+
+}
+
+header div button {
+    font-family: 'Raleway', sans-serif;
+    height: 76px;
+    width: 76px;
+    border-radius: 50px;
+    margin-left: 4vh;
+    margin-right: 4vh;
+}
+
+header div button.reset-button {
+    font-family: 'Raleway', sans-serif;
+    font-size: 4vh;
+    color: white;
+    background: none;
+    font-weight: 100;
+    border: none;
+    height: 76px;
+    width: 76px;
+    border-radius: 50px;
+    margin-left: 4vh;
+    margin-right: 4vh;
+}
+
+header div button.instructionsDD-button {
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    color: rgb(222, 222, 222);
+    font-size: 50px;
+    height: 76px;
+    width: 76px;
+    background-color: transparent;
+}
+
+p.titleTXT {
+    font-family: 'Raleway', sans-serif;
+    font-size: 13vh;
+    font-weight: 100;
+
+}
+
+ /* -------------- footer -------------------------------I */
+
+footer {
+    position: relative;
+    bottom: 15vh;
+    left: 0;
+    /* border: 1px white solid; */
+    width: 100%;
+    height: 20px;
+}
+
+div.div-footer {
+    font-family: 'Raleway', sans-serif;
+    position: inherit;
+    display: flex;
+    height: 15vh;
+    width: inherit;
+    /* border: 1px white dashed; */
+    border-top: 1px solid rgba(255, 255, 255, 0.091);
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: rgba(0, 0, 0, 0.338); */
+    background-color: rgba(24, 24, 24, 0.338);
+    backdrop-filter: blur(8px);
+}
+
+a.git-hub-tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    color: rgb(222, 222, 222);
+    font-size: 30px;
+    height: 76px;
+    width: 76px;
+    background-color: transparent;
+
 }
