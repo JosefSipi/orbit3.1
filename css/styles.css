@@ -30,7 +30,7 @@ header div {
     border-bottom: 1px solid rgba(255, 255, 255, 0.091);
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(24, 24, 24, 0.338);
+    background-color: rgba(28, 28, 28, 0.338);
     backdrop-filter: blur(8px);
 
 }
@@ -46,7 +46,7 @@ header div button {
 
 header div button.reset-button {
     font-family: 'Raleway', sans-serif;
-    font-size: 4vh;
+    font-size: 2.8vh;
     color: white;
     background: none;
     font-weight: 100;
@@ -59,14 +59,29 @@ header div button.reset-button {
 }
 
 header div button.instructionsDD-button {
-    border: none;
+    /* border: solid white 2px; */
+    border: 1px solid rgba(255, 255, 255, 0.091);
+    border-radius: 50px;
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
     color: rgb(222, 222, 222);
-    font-size: 50px;
-    height: 76px;
-    width: 76px;
+    font-size: 4vh;
+    height: 8vh;
+    width: 8vh;
     background-color: transparent;
+}
+
+header div button.instructionsDD-button-click {
+    /* border: solid white 2px; */
+    border: 1px solid rgba(255, 255, 255, 0.091);
+    border-radius: 50px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    color: rgb(222, 222, 222);
+    font-size: 4vh;
+    height: 8vh;
+    width: 8vh;
+    background-color: rgba(41, 41, 41, 0.397);
 }
 
 p.titleTXT {
@@ -96,13 +111,13 @@ div.div-footer {
     /* border: 1px white dashed; */
     border-top: 1px solid rgba(255, 255, 255, 0.091);
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     /* background-color: rgba(0, 0, 0, 0.338); */
-    background-color: rgba(24, 24, 24, 0.338);
-    backdrop-filter: blur(8px);
+    background-color: rgba(28, 28, 28, 0.338);
+    backdrop-filter: blur(80px);
 }
 
-a.git-hub-tag {
+a.logo-hub-tag {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,5 +130,72 @@ a.git-hub-tag {
     height: 76px;
     width: 76px;
     background-color: transparent;
+ border-radius: 50px;
+  height: 20px;
+  width: auto;
+  margin: 20px;
+}
 
+img.info-logo {
+    background: white;
+    color: white;
+    border-radius: 50px;
+  height: 20px;
+  width: auto;
+  padding: 3px;
+  /* margin-left: 20px; */
+}
+
+img.info-logo-link {
+    background: white;
+    color: white;
+    border-radius: 50px;
+  height: 22px;
+  width: auto;
+  padding: 2.8px;
+  /* margin-left: 1px; */
+}
+
+img.info-logo-link-angel {
+    background: white;
+
+    border-radius: 50px;
+  height: 25px;
+  width: auto;
+  padding: 1px;
+}
+
+
+/* --------------- instructionsModal ------------------- */
+
+div.inst-modal {
+    display: none;
+    position: absolute;
+    top: 20vh;
+    right: 25vw;
+    height: 60vh;
+    width: 50vw;
+    
+    border-radius: 20px;
+    
+    border: 1px solid rgba(255, 255, 255, 0.091);
+    /* border: solid white 3px; */
+    
+    
+    /* filter: blur(30px); */
+    backdrop-filter: blur(80px);
+    background-color: rgba(5, 5, 5, 0.70);
+    z-index: 9;
+}
+
+
+div.back-blur {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.137);
+    height: 100vh;
+    width: 100vw;
+    z-index: 8;
 }

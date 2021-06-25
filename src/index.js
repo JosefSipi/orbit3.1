@@ -5,7 +5,7 @@ const { build } = require('../src/scripts/build');
 
 
 var OrbitControls = oc(THREE);
-var amount = 30;
+var amount = 10;
 var count = Math.pow( amount, 3 )
 
 var scene, camera, renderer, newCube;
@@ -86,10 +86,54 @@ const matrix = new THREE.Matrix4();
     let controls =  new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true;
 
-
-    window.addEventListener( 'click', onClick );
+    // debugger
+    canvas.addEventListener( 'click', onClick);
+    document.addEventListener('mousemove', setMouse );
+    document.addEventListener('keydown', keyDown );
+    // window.addEventListener( 'click', onClick );
 }
 
+var setMouse = function(e) {
+    e.preventDefault();
+    mouse.x = ( e.clientX / (window.innerWidth)) * 2 - 1;
+    mouse.y = - ( e.clientY / (window.innerHeight)) * 2 + 1;
+}
+
+var keyDown = function(event) {
+    event.preventDefault();
+
+    if(event.key === "d"){
+
+        raycaster.setFromCamera( mouse, camera );
+        
+        const intersection = raycaster.intersectObjects( scene.children, true );
+        // const color2 = new THREE.Color( 'yellow' );
+
+        var newMatrix = new THREE.Matrix4();
+        newMatrix.setPosition(-1000, -10000, -1000);
+
+        if ( intersection.length > 0 ) {
+
+            const instanceId = intersection[ 0 ].instanceId;
+
+
+            // newCube.setColorAt( instanceId, color2 );
+
+            newCube.setMatrixAt( instanceId, newMatrix )
+            newCube.instanceMatrix.needsUpdate = true;
+
+
+
+            // newCube.instanceColor.needsUpdate = true;
+
+        }
+
+        renderer.render(scene, camera);
+
+    }
+
+
+}
 
 
 
@@ -104,14 +148,24 @@ var onClick = function(event) {
     raycaster.setFromCamera( mouse, camera );
     
     const intersection = raycaster.intersectObjects( scene.children, true );
-    const color2 = new THREE.Color( 'yellow' );
+    // const color2 = new THREE.Color( 'yellow' );
+
+    var newMatrix = new THREE.Matrix4();
+    newMatrix.setPosition(-1000, -10000, -1000);
 
     if ( intersection.length > 0 ) {
 
         const instanceId = intersection[ 0 ].instanceId;
 
-        newCube.setColorAt( instanceId, color2 );
-        newCube.instanceColor.needsUpdate = true;
+
+        // newCube.setColorAt( instanceId, color2 );
+
+        newCube.setMatrixAt( instanceId, newMatrix )
+        newCube.instanceMatrix.needsUpdate = true;
+
+
+
+        // newCube.instanceColor.needsUpdate = true;
 
     }
 
@@ -135,3 +189,6 @@ function render(){
 init();
 animate();
 build();
+
+
+// module.exports = { init };
