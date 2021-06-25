@@ -14,11 +14,13 @@ var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
 var canvas;
 
+
+
 // document.addEventListener
 // var canvas = window.body.querySelector('canvas');
 
-function init() {
-
+export function init() {
+    // initial();
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera( 
         75,
@@ -60,7 +62,7 @@ newCube = new THREE.InstancedMesh( geometry, material, count );
 
 let m = 0;
 const offset = (amount - 1) / 2;
-const color = new THREE.Color();
+const color = new THREE.Color("rgb(100%, 10%, 100%)");
 
 const matrix = new THREE.Matrix4();
 
@@ -82,6 +84,10 @@ const matrix = new THREE.Matrix4();
     }
 
     scene.add(newCube);
+
+    var light = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(light);
+    
     camera.position.z = amount + amount / 2;
     let controls =  new OrbitControls(camera, renderer.domElement)
     controls.enableDamping = true;
@@ -90,8 +96,17 @@ const matrix = new THREE.Matrix4();
     canvas.addEventListener( 'click', onClick);
     document.addEventListener('mousemove', setMouse );
     document.addEventListener('keydown', keyDown );
+    document.addEventListener('keyup', keyUp );
     // window.addEventListener( 'click', onClick );
 }
+
+var sKeyStatus = false;
+
+var keyUp = function(e) {
+    e.preventDefault();
+    sKeyStatus = false;
+}
+
 
 var setMouse = function(e) {
     e.preventDefault();
@@ -130,6 +145,8 @@ var keyDown = function(event) {
 
         renderer.render(scene, camera);
 
+    } else if (event.key === 's') {
+        sKeyStatus = true;
     }
 
 
@@ -139,44 +156,47 @@ var keyDown = function(event) {
 
 var onClick = function(event) {
     event.preventDefault();
-
-	mouse.x = ( event.clientX / (window.innerWidth)) * 2 - 1;
-	mouse.y = - ( event.clientY / (window.innerHeight)) * 2 + 1;
-	// mouse.x = ( event.clientX / (window.innerWidth * .75)) * 2 - 1;
-	// mouse.y = - ( event.clientY / (window.innerHeight * .75)) * 2 + 1;
-
-    raycaster.setFromCamera( mouse, camera );
     
-    const intersection = raycaster.intersectObjects( scene.children, true );
-    // const color2 = new THREE.Color( 'yellow' );
+    if ( sKeyStatus ) {
 
-    var newMatrix = new THREE.Matrix4();
-    newMatrix.setPosition(-1000, -10000, -1000);
-
-    if ( intersection.length > 0 ) {
-
-        const instanceId = intersection[ 0 ].instanceId;
-
-
-        // newCube.setColorAt( instanceId, color2 );
-
-        newCube.setMatrixAt( instanceId, newMatrix )
-        newCube.instanceMatrix.needsUpdate = true;
-
-
-
-        // newCube.instanceColor.needsUpdate = true;
-
+    } else {
+        mouse.x = ( event.clientX / (window.innerWidth)) * 2 - 1;
+        mouse.y = - ( event.clientY / (window.innerHeight)) * 2 + 1;
+        // mouse.x = ( event.clientX / (window.innerWidth * .75)) * 2 - 1;
+        // mouse.y = - ( event.clientY / (window.innerHeight * .75)) * 2 + 1;
+    
+        raycaster.setFromCamera( mouse, camera );
+        
+        const intersection = raycaster.intersectObjects( scene.children, true );
+        // const color2 = new THREE.Color( 'yellow' );
+    
+        var newMatrix = new THREE.Matrix4();
+        newMatrix.setPosition(-1000, -10000, -1000);
+    
+        if ( intersection.length > 0 ) {
+    
+            const instanceId = intersection[ 0 ].instanceId;
+    
+    
+            // newCube.setColorAt( instanceId, color2 );
+    
+            newCube.setMatrixAt( instanceId, newMatrix )
+            newCube.instanceMatrix.needsUpdate = true;
+    
+    
+    
+            // newCube.instanceColor.needsUpdate = true;
+    
+        }
+    
+        renderer.render(scene, camera);
     }
-
-    renderer.render(scene, camera);
 }
-
-
 
 function animate() {
 
     requestAnimationFrame(animate);
+
 
     render();
     
@@ -186,8 +206,12 @@ function render(){
     renderer.render(scene, camera);
 }
 
-init();
-animate();
+export function start(){
+    init();
+    animate();
+}
+
+start();
 build();
 
 
