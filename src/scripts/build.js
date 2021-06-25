@@ -108,7 +108,7 @@ angelList.className = "logo-hub-tag";
 
 const imageangelList = document.createElement('img');
 imageangelList.className = "info-logo-link-angel";
-imageangelList.setAttribute('src', '../../src/images/angelList.PNG');
+imageangelList.setAttribute('src', 'https://github.com/JosefSipi/orbit3.1/blob/main/src/images/angelList.png');
 imageangelList.setAttribute('alt', 'angelList Logo')
 
 angelList.appendChild(imageangelList);
