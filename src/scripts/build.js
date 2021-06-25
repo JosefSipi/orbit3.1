@@ -77,7 +77,7 @@ gitHub.className = "logo-hub-tag";
 
 const imageGitHub = document.createElement('img');
 imageGitHub.className = "info-logo";
-imageGitHub.setAttribute('src', '../../src/images/github.png');
+imageGitHub.setAttribute('src', '../../src/images/github.PNG');
 imageGitHub.setAttribute('alt', 'gitHub Logo')
 
 gitHub.appendChild(imageGitHub);
@@ -94,7 +94,7 @@ const imagelinkedIn = document.createElement('img');
 // imagelinkedIn.setAttribute( 'href', "https://www.linkedin.com/in/joseph-sipiorski-590452195/");
 
 imagelinkedIn.className = "info-logo-link";
-imagelinkedIn.setAttribute('src', '../../src/images/linkedIn.png');
+imagelinkedIn.setAttribute('src', '../../src/images/linkedIn.PNG');
 imagelinkedIn.setAttribute('alt', 'linkedIn Logo')
 
 linkedIn.appendChild(imagelinkedIn);
@@ -108,7 +108,7 @@ angelList.className = "logo-hub-tag";
 
 const imageangelList = document.createElement('img');
 imageangelList.className = "info-logo-link-angel";
-imageangelList.setAttribute('src', '../../src/images/angelList.png');
+imageangelList.setAttribute('src', '../../src/images/angelList.PNG');
 imageangelList.setAttribute('alt', 'angelList Logo')
 
 angelList.appendChild(imageangelList);
