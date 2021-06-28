@@ -133,7 +133,7 @@ linkedIn.className = "logo-hub-tag";
 
 const imagelinkedIn = document.createElement('img');
 imagelinkedIn.setAttribute( 'target', "_blank")
-imagelinkedIn.setAttribute( 'src', "src/images/linkedin.png");
+imagelinkedIn.setAttribute( 'src', "src/images/linkedIn.png");
 
 imagelinkedIn.className = "info-logo-link";
 // imagelinkedIn.setAttribute('src', 'src/images/linkedin.png');
