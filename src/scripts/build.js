@@ -133,10 +133,10 @@ linkedIn.className = "logo-hub-tag";
 
 const imagelinkedIn = document.createElement('img');
 imagelinkedIn.setAttribute( 'target', "_blank")
-imagelinkedIn.setAttribute( 'src', "../../src/images/linkedin.png");
+imagelinkedIn.setAttribute( 'src', "src/images/linkedin.png");
 
 imagelinkedIn.className = "info-logo-link";
-imagelinkedIn.setAttribute('src', '../../src/images/linkedin.png');
+// imagelinkedIn.setAttribute('src', 'src/images/linkedin.png');
 imagelinkedIn.setAttribute('alt', 'linkedIn Logo')
 
 linkedIn.appendChild(imagelinkedIn);
@@ -150,7 +150,7 @@ angelList.className = "logo-hub-tag";
 
 const imageangelList = document.createElement('img');
 imageangelList.className = "info-logo-link-angel";
-imageangelList.setAttribute('src', '../../src/images/angelList.png');
+imageangelList.setAttribute('src', 'src/images/angelList.png');
 imageangelList.setAttribute('alt', 'angelList Logo')
 
 angelList.appendChild(imageangelList);
