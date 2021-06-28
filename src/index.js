@@ -87,10 +87,17 @@ const matrix = new THREE.Matrix4();
 
     var light = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(light);
-    
+
     camera.position.z = amount + amount / 2;
-    let controls =  new OrbitControls(camera, renderer.domElement)
-    controls.enableDamping = true;
+    var controls =  new OrbitControls(camera, renderer.domElement)
+    controls.maxDistance = (amount + 10);
+    controls.minDistance  = 1;
+    controls.update();
+
+    // // controls.maxZoom(.8);
+
+    // controls.enableDamping = true;
+    // controls.damping
 
     // debugger
     canvas.addEventListener( 'click', onClick);
@@ -196,7 +203,6 @@ var onClick = function(event) {
 function animate() {
 
     requestAnimationFrame(animate);
-
 
     render();
     
