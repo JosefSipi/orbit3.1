@@ -119,7 +119,7 @@ gitHub.className = "logo-hub-tag";
 
 const imageGitHub = document.createElement('img');
 imageGitHub.className = "info-logo";
-imageGitHub.setAttribute('src', '../../src/images/github.png');
+imageGitHub.setAttribute('src', 'src/images/github.png');
 imageGitHub.setAttribute('alt', 'gitHub Logo')
 
 gitHub.appendChild(imageGitHub);
