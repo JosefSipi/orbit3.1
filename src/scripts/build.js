@@ -132,8 +132,8 @@ linkedIn.setAttribute( 'href', "https://www.linkedin.com/in/joseph-sipiorski-590
 linkedIn.className = "logo-hub-tag";
 
 const imagelinkedIn = document.createElement('img');
-// imagelinkedIn.setAttribute( 'target', "_blank")
-// imagelinkedIn.setAttribute( 'href', "https://www.linkedin.com/in/joseph-sipiorski-590452195/");
+imagelinkedIn.setAttribute( 'target', "_blank")
+imagelinkedIn.setAttribute( 'src', "../../src/images/linkedin.png");
 
 imagelinkedIn.className = "info-logo-link";
 imagelinkedIn.setAttribute('src', '../../src/images/linkedin.png');
