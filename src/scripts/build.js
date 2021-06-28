@@ -150,7 +150,7 @@ angelList.className = "logo-hub-tag";
 
 const imageangelList = document.createElement('img');
 imageangelList.className = "info-logo-link-angel";
-imageangelList.setAttribute('src', '../../src/images/angellist.png');
+imageangelList.setAttribute('src', '../../src/images/angelList.png');
 imageangelList.setAttribute('alt', 'angelList Logo')
 
 angelList.appendChild(imageangelList);
