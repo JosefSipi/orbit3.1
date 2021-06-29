@@ -13,34 +13,37 @@ with different options such as rotating the 3D grid while drawing.
 * create/reset a 3D grid on clicking a button
 * reset will also repostion camera at center point
 #### Draw with cursor
-* allow boxes that the cursor is on while left click is down to change color
-of box to black
+* allow boxes that the cursor is on while left click is down to be removed
+* while "d" key is down cursor will remove any cube it touches
 
 #### Adjust current plane in x, y and z direction
-* allow user to change the plane on which they are drawing
-* create dedicated keys for navigating drawing planes
-* allow zoom to be adjusted
+* use zoom to navigate in and out of different planes
+* use cursor to rotate in x, y, and z and zoom in or out from each direction
 
 ## Wire Frame
 ![wire frame image](src/images/second.png)
 
 ## File Structure
-drawing_with_JS
-* assets
-    * images
+Orbit
+* css
+    * reset.css
+    * styles.css
 * src
-    * three_D_grid.js
-* style
-    * main.scss
-    * grid.scss
+    * images
+        * angelList.png
+        * github.png
+        * linkedIn.png
+        * second.png
+    * sripts
+        * build.js
 * index.html
 
 ## Architecture and Technology
 
 * Will be using HTML canvas element for drawing on grid
-* will be using javascript for creating the 3D grid and other grid
-manipulation logic
-
+* will be using THREE.js for all 3D manipulation
+    * using InstancedMesh from THREE.js for more efficient rendering and removal of cubbies through setMatrixAt
+    
 ## Implementation Timeline
 *  Day one & two
     *   General setup

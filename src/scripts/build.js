@@ -1,5 +1,3 @@
-// import { init } from '../index'
-// const { start } = require('../index')
 
 const build = () => {
 
@@ -25,7 +23,6 @@ resetButton.textContent = "Reset";
 div.appendChild(resetButton);
 
 const titleTXT = document.createElement('p');
-// titleTXT.addEventListener('click', refreshClick)
 titleTXT.textContent = "Orbit";
 titleTXT.className = "titleTXT";
 div.appendChild(titleTXT);
@@ -105,12 +102,8 @@ instructionsModal.appendChild(finalP2);
 document.body.appendChild(instructionsModal);
 
 // -------------- header -------------------------------I
-// -----------------------------------------------------
-// -----------------------------------------------------
-// -----------------------------------------------------
-// -----------------------------------------------------
-// -----------------------------------------------------
-// -----------------------------------------------------
+
+
 // -------------- footer -------------------------------I
 
 const footer = document.createElement('footer');
@@ -144,7 +137,6 @@ imagelinkedIn.setAttribute( 'target', "_blank")
 imagelinkedIn.setAttribute( 'src', "src/images/linkedIn.png");
 
 imagelinkedIn.className = "info-logo-link";
-// imagelinkedIn.setAttribute('src', 'src/images/linkedin.png');
 imagelinkedIn.setAttribute('alt', 'linkedIn Logo')
 
 linkedIn.appendChild(imagelinkedIn);
@@ -164,29 +156,9 @@ imageangelList.setAttribute('alt', 'angelList Logo')
 angelList.appendChild(imageangelList);
 divfooter.appendChild(angelList);
 
-
-// const cubeSize = document.createElement('input');
-
-// cubeSize.setAttribute('type', 'text');
-// cubeSize.id = 'cube-input';
-// cubeSize.setAttribute('placeholder', "cube");
-
-// divfooter.appendChild(cubeSize);
-
-
 // -------------- footer -------------------------------I
-// -------------- input for cube size -------------------------------I
-
-
-// cubeSize.addEventListener('change', updateCubeSize );
-
-
 
 }
-
-
-
-
 
 
 module.exports = {
