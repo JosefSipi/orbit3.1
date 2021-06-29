@@ -5,8 +5,6 @@ const { build } = require('../src/scripts/build');
 
 
 var OrbitControls = oc(THREE);
-var amount = 10;
-var count = Math.pow( amount, 3 )
 
 var scene, camera, renderer, newCube;
 
@@ -19,8 +17,15 @@ var canvas;
 // document.addEventListener
 // var canvas = window.body.querySelector('canvas');
 
-export function init() {
+export function init(size) {
     // initial();
+    
+    var amount = size;
+    var count = Math.pow( amount, 3 )
+
+
+
+
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera( 
         75,
@@ -55,7 +60,7 @@ export function init() {
 const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 
 
-const material = new THREE.MeshBasicMaterial({color: 0x0000ff});
+const material = new THREE.MeshPhongMaterial({color: 0x0000ff});
 material.wireframe = true;
 // let newCube = new THREE.Mesh( geometry, material );
 newCube = new THREE.InstancedMesh( geometry, material, count );
@@ -85,12 +90,17 @@ const matrix = new THREE.Matrix4();
 
     scene.add(newCube);
 
-    var light = new THREE.AmbientLight(0xffffff, 0.5);
-    scene.add(light);
+    const light = new THREE.DirectionalLight( 0xffffff, 50, 100 );
+    light.position.set( 0, 50, 1 ); //default; light shining from top
+    light.castShadow = true; // default false
+    scene.add( light );
+
+    var light2 = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(light2);
 
     camera.position.z = amount + amount / 2;
     var controls =  new OrbitControls(camera, renderer.domElement)
-    controls.maxDistance = (amount + 10);
+    controls.maxDistance = (amount * 2);
     controls.minDistance  = 1;
     controls.update();
 
@@ -204,6 +214,10 @@ function animate() {
 
     requestAnimationFrame(animate);
 
+    // newCube.rotation.y += 0.01;
+    // newCube.rotation.x += 0.01;
+    // newCube.rotation.z += 0.01;
+
     render();
     
 }
@@ -212,13 +226,16 @@ function render(){
     renderer.render(scene, camera);
 }
 
-export function start(){
-    init();
+function start( size ){
+    init(size);
     animate();
 }
 
-start();
-build();
+function run(size) {
+    start(size);
+    build();
+}
 
+run(10);
 
 // module.exports = { init };

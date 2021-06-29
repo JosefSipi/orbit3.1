@@ -241,5 +241,34 @@ p.section-p-f {
     font-size: 2.5vh;
     font-weight: 100;
     color: white;
-        font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif;
+}
+
+
+input#cube-input{
+    position: absolute;
+    right: 10vw;
+    height: 40px;
+    width: 40px;
+    text-indent: 7px;
+    border: white solid 2px;
+    background-color: transparent;
+    color: white;
+    border-radius: 50%;
+
+}
+
+/* p.div-input{
+    position: absolute;
+    right: 10vw;
+    color: white;
+} */
+
+p.final-p {
+    margin-top: 3vh;
+    margin-left: 4vw;
+    color: white;
+    font-size: 2.5vh;
+    font-weight: 100;
+    font-family: 'Raleway', sans-serif;
 }

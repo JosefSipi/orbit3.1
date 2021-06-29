@@ -21,6 +21,7 @@ resetButton.addEventListener('click', (e) => {
 
 resetButton.className = "reset-button";
 resetButton.textContent = "Reset";
+
 div.appendChild(resetButton);
 
 const titleTXT = document.createElement('p');
@@ -90,8 +91,15 @@ instructionsModal.appendChild(thirdP);
 // ------------ final p -----------
 const finalP = document.createElement('p');
 finalP.className = 'final-p'
-finalP.textContent = 'Hold "s" key - will prevent right click from removing cube'
-instructionsModal.appendChild(thirdP);
+finalP.textContent = 'move the cube around with the mouse and zoom in and out by scrolling'
+instructionsModal.appendChild(finalP);
+
+
+// ------------ final p2 -----------
+const finalP2 = document.createElement('p');
+finalP2.className = 'final-p';
+finalP2.textContent = 'create any structure by removing cubes from the main cube';
+instructionsModal.appendChild(finalP2);
 
 
 document.body.appendChild(instructionsModal);
@@ -157,12 +165,29 @@ angelList.appendChild(imageangelList);
 divfooter.appendChild(angelList);
 
 
+// const cubeSize = document.createElement('input');
+
+// cubeSize.setAttribute('type', 'text');
+// cubeSize.id = 'cube-input';
+// cubeSize.setAttribute('placeholder', "cube");
+
+// divfooter.appendChild(cubeSize);
 
 
 // -------------- footer -------------------------------I
+// -------------- input for cube size -------------------------------I
+
+
+// cubeSize.addEventListener('change', updateCubeSize );
+
 
 
 }
+
+
+
+
+
 
 module.exports = {
     build
