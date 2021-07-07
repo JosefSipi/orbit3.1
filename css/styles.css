@@ -211,15 +211,22 @@ div.back-blur {
 p.title-ins {
     color: white;
     font-family: 'Raleway', sans-serif;
-    /* justify-self: flex-start;
-    align-self: flex-start; */
+    justify-self: flex-start;
+    align-self: flex-start;
 
 
+    /* -------------------- */
+    /* align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    width: inherit; */
     position: absolute;
     top: 2vh;
     left: 2vw;
     margin-top: 3vw;
     margin-left: 13vw;
+    /* -------------------- */
     font-size: 4.5vh;
     font-weight: 100;
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.091); */
@@ -227,8 +234,10 @@ p.title-ins {
 }
 
 p.section-p {
+
     margin-top: 3vh;
     margin-left: 4vw;
+    margin-right: 4vw;
     color: white;
     font-size: 2.5vh;
     font-weight: 100;
@@ -238,6 +247,7 @@ p.section-p {
 p.section-p-f {
     margin-top: 18vh;
     margin-left: 4vw;
+    margin-right: 4vw;
     font-size: 2.5vh;
     font-weight: 100;
     color: white;
@@ -267,8 +277,18 @@ input#cube-input{
 p.final-p {
     margin-top: 3vh;
     margin-left: 4vw;
+    margin-right: 4vw;
     color: white;
     font-size: 2.5vh;
+    font-weight: 100;
+    font-family: 'Raleway', sans-serif;
+}
+
+p.close-x{
+    position: absolute;
+    top: 4vw;
+    right: 4vw;
+    color: white;
     font-weight: 100;
     font-family: 'Raleway', sans-serif;
 }

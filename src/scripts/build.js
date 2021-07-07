@@ -54,6 +54,11 @@ instructionsDD.addEventListener('click', (e) => {
     backgroundBlur.style.display = 'block';
 } )
 
+document.addEventListener("DOMContentLoaded", () => {
+    instructionsDD.style.backgroundColor = "rgb(50, 50, 50, .21)";
+    instructionsModal.style.display = 'flex';
+    backgroundBlur.style.display = 'block';
+})
 
 //  ------------- instructions Modal ----------------
 
@@ -97,6 +102,16 @@ const finalP2 = document.createElement('p');
 finalP2.className = 'final-p';
 finalP2.textContent = 'create any structure by removing cubes from the main cube';
 instructionsModal.appendChild(finalP2);
+
+
+// ------------------------ close x --------------------I
+
+const theClosingX = document.createElement('p')
+theClosingX.textContent = "X"
+theClosingX.className = "close-x"
+instructionsModal.appendChild(theClosingX)
+
+// ------------------------ close x --------------------I
 
 
 document.body.appendChild(instructionsModal);
