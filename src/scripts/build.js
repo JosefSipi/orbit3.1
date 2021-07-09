@@ -57,7 +57,8 @@ instructionsDD.addEventListener('click', (e) => {
 
 document.addEventListener("DOMContentLoaded", (e) => {
     e.preventDefault();
-    if (window.location.href.includes("?reload=true")){
+    debugger
+    if (window.location.href.includes('?reload=true')){
 
     } else {
         instructionsDD.style.backgroundColor = "rgb(50, 50, 50, .21)";
