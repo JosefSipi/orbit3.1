@@ -1,6 +1,7 @@
 import oc from 'three-orbit-controls';
 import * as THREE from 'three';
 
+
 const { build } = require('../src/scripts/build');
 
 
@@ -13,17 +14,41 @@ var mouse = new THREE.Vector2();
 var canvas;
 
 
+document.addEventListener('DOMContentLoaded', (e) => {
+    e.preventDefault();
+    const resetButton = document.createElement('button');
+
+    resetButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.location.href.slice(22).length > 3){
+            window.location.reload();
+        } else {
+            window.location.href += "?reload=true"
+        }
+    } );
+    
+    
+    
+    resetButton.className = "reset-button";
+    resetButton.textContent = "Reset";
+    
+    const div = document.getElementById('the-div')
+
+    div.insertBefore(resetButton, div.firstElementChild);
+
+})
+
+
 
 // document.addEventListener
 // var canvas = window.body.querySelector('canvas');
 
-export function init(size) {
+export function init(size, arg2) {
+    var something = arg2
     // initial();
     
     var amount = size;
     var count = Math.pow( amount, 3 )
-
-
 
 
     scene = new THREE.Scene();
@@ -44,7 +69,11 @@ export function init(size) {
     // renderer.setSize((window.innerWidth), (window.innerHeight ));
     renderer.setSize((window.innerWidth), (window.innerHeight));
 
+
+
     document.body.appendChild(renderer.domElement);
+    
+
     canvas = document.querySelector('canvas');
 
     window.addEventListener('resize', () => {
@@ -56,20 +85,20 @@ export function init(size) {
     })
 
 
-// -------------------------------original loop -----------------------------------------
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+    // -------------------------------original loop -----------------------------------------
+    const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 
 
-const material = new THREE.MeshPhongMaterial({color: 0x0000ff});
-material.wireframe = true;
-// let newCube = new THREE.Mesh( geometry, material );
-newCube = new THREE.InstancedMesh( geometry, material, count );
+    const material = new THREE.MeshPhongMaterial({color: 0x0000ff});
+    material.wireframe = true;
+    // let newCube = new THREE.Mesh( geometry, material );
+    newCube = new THREE.InstancedMesh( geometry, material, count );
 
-let m = 0;
-const offset = (amount - 1) / 2;
-const color = new THREE.Color("rgb(100%, 10%, 100%)");
+    let m = 0;
+    const offset = (amount - 1) / 2;
+    const color = new THREE.Color("rgb(100%, 10%, 100%)");
 
-const matrix = new THREE.Matrix4();
+    const matrix = new THREE.Matrix4();
 
     for (let i = 0; i < amount; i++){
         for (let j = 0; j < amount; j++){
@@ -233,9 +262,10 @@ function start( size ){
 
 function run(size) {
     start(size);
-    build();
+    // build();
 }
 
 run(10);
+build();
 
 // module.exports = { init };

@@ -8,19 +8,20 @@ const header = document.createElement('header');
 document.body.appendChild(header);
 
 const div = document.createElement('div');
+div.id = "the-div"
 
 header.appendChild(div);
 
-const resetButton = document.createElement('button');
-resetButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.reload();
-} );
+// const resetButton = document.createElement('button');
+// resetButton.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     window.location.reload();
+// } );
 
-resetButton.className = "reset-button";
-resetButton.textContent = "Reset";
+// resetButton.className = "reset-button";
+// resetButton.textContent = "Reset";
 
-div.appendChild(resetButton);
+// div.appendChild(resetButton);
 
 const titleTXT = document.createElement('p');
 titleTXT.textContent = "Orbit";
@@ -54,10 +55,15 @@ instructionsDD.addEventListener('click', (e) => {
     backgroundBlur.style.display = 'block';
 } )
 
-document.addEventListener("DOMContentLoaded", () => {
-    instructionsDD.style.backgroundColor = "rgb(50, 50, 50, .21)";
-    instructionsModal.style.display = 'flex';
-    backgroundBlur.style.display = 'block';
+document.addEventListener("DOMContentLoaded", (e) => {
+    e.preventDefault();
+    if (window.location.href.slice(22) === "?reload=true"){
+
+    } else {
+        instructionsDD.style.backgroundColor = "rgb(50, 50, 50, .21)";
+        instructionsModal.style.display = 'flex';
+        backgroundBlur.style.display = 'block';
+    }
 })
 
 //  ------------- instructions Modal ----------------
@@ -74,7 +80,7 @@ instructionsModal.appendChild(titleIns);
 // ------------ first p -----------
 const firstP = document.createElement('p');
 firstP.className = 'section-p-f'
-firstP.textContent = 'Right click will remove a cube'
+firstP.textContent = 'Left click will remove a cube'
 instructionsModal.appendChild(firstP);
 
 // ------------ second p -----------
@@ -86,7 +92,7 @@ instructionsModal.appendChild(secondP);
 // ------------ third p -----------
 const thirdP = document.createElement('p');
 thirdP.className = 'section-p'
-thirdP.textContent = 'Hold "s" key - will prevent right click from removing cube'
+thirdP.textContent = 'Hold "s" key - will prevent left click from removing cube'
 instructionsModal.appendChild(thirdP);
 
 
@@ -109,6 +115,12 @@ instructionsModal.appendChild(finalP2);
 const theClosingX = document.createElement('p')
 theClosingX.textContent = "X"
 theClosingX.className = "close-x"
+theClosingX.addEventListener('click', (e) => {
+    e.preventDefault();
+    backgroundBlur.style.display = 'none';
+    instructionsDD.style.background = "none";
+    instructionsModal.style.display = 'none';
+})
 instructionsModal.appendChild(theClosingX)
 
 // ------------------------ close x --------------------I
@@ -127,6 +139,10 @@ const divfooter = document.createElement('div');
 divfooter.className = "div-footer"
 footer.appendChild(divfooter)
 
+const secondDiv = document.createElement('div')
+secondDiv.className = "second-div-footer"
+secondDiv.innerText = "By Joseph Sipiorski"
+footer.appendChild(secondDiv)
 
 const gitHub = document.createElement('a');
 gitHub.setAttribute( 'target', "_blank");

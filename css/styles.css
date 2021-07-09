@@ -104,11 +104,23 @@ footer {
     height: 20px;
 }
 
+div.second-div-footer{
+    display: flex;
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    font-size: 1.9vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+}
+
 div.div-footer {
     font-family: 'Raleway', sans-serif;
     position: inherit;
     display: flex;
-    height: 15vh;
+    height: 10vh;
     width: inherit;
     /* border: 1px white dashed; */
     border-top: 1px solid rgba(255, 255, 255, 0.091);
@@ -284,11 +296,16 @@ p.final-p {
     font-family: 'Raleway', sans-serif;
 }
 
-p.close-x{
+p.close-x {
     position: absolute;
-    top: 4vw;
-    right: 4vw;
+    top: 2vw;
+    right: 2vw;
     color: white;
     font-weight: 100;
     font-family: 'Raleway', sans-serif;
+    z-index: 7;
+}
+
+p.close-x:hover {
+    cursor: pointer;
 }
