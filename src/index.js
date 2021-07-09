@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     resetButton.addEventListener('click', (e) => {
         e.preventDefault();
-        if (window.location.href.slice(22).length > 3){
+        if (window.location.href.includes('?reload=true')){
             window.location.reload();
         } else {
             window.location.href += "?reload=true"
