@@ -1,58 +1,63 @@
 # Orbit
 
+### Live link 
+https://josefsipi.github.io/orbit3.1/
+
 ## Background and Overview
-Orbit is a live interactive 3D drawing app that will allow you to 
-navigate around within a 3D grid and draw on different planes of the grid.
+Orbit is a live interactive 3D drawing app that will allow you to navigate around within a 3D grid and remove certain cubes to create a desired shape.
 
-The long term goal of this project will be to eventually draw within a 3D grid
-with different options such as rotating the 3D grid while drawing.
+## How it works
 
-## Functionality and MVP
+Users will be able to rotate the cube by dragging it in the desired direction with left clicks, additionally by using the scroll users will be able to navigate into or out of the cube.
 
-#### Generate a 3D drawing grid
-* create/reset a 3D grid on clicking a button
-* reset will also repostion camera at center point
-#### Draw with cursor
-* allow boxes that the cursor is on while left click is down to be removed
-* while "d" key is down cursor will remove any cube it touches
+Users can create shapes out of the cube by removing smaller cubes from the larger cube, this can be done by using left click or by holding the “d” key; left click will remove a single cube whereas holding the “d” key will remove any cube the mouse is currently hovering over and will continue to remove cubes as the cube or mouse moves beneath it. The “s” key can be held down to prevent any cube removal functionality, it will prevent the left click from removing cubes allowing the user to navigate without a fear of unintentionally removing cubes.
 
-#### Adjust current plane in x, y and z direction
-* use zoom to navigate in and out of different planes
-* use cursor to rotate in x, y, and z and zoom in or out from each direction
+![wire frame image](src/images/screenshot.png)
+![wire frame image](src/images/screenshot2.png)
 
-## Wire Frame
-![wire frame image](src/images/second.png)
+The long term goal of this project will be to eventually draw within a 3D grid with different options such as rotating the 3D grid while drawing as well as changing colors of specific cubes and adding additional cubes.
 
-## File Structure
-Orbit
-* css
-    * reset.css
-    * styles.css
-* src
-    * images
-        * angelList.png
-        * github.png
-        * linkedIn.png
-        * second.png
-    * sripts
-        * build.js
-* index.html
+## Technologies/Technical Challenges
 
-## Architecture and Technology
+Orbit is created using THREE.js in an HTML canvas element. Because of the number of cubes that are rendered during an animation frame InstancedMesh was used to create the 3D object, which optimizes overall rendering performance by reducing the number of draw calls.
 
-* Will be using HTML canvas element for drawing on grid
-* will be using THREE.js for all 3D manipulation
-    * using InstancedMesh from THREE.js for more efficient rendering and removal of cubbies through setMatrixAt
-    
-## Implementation Timeline
-*  Day one & two
-    *   General setup
-    *   Generate 3D grid ()
-    *   implement grid reset button
-*  Day three
-    *   Implement drawing option ()
-*  Day four
-    *   Adjust which layer is being drawn on
+## Removing cubes with "d" key and prevent cube removal with "s" key
+
+By dynamically evaluating the key that was/is pressed during a keyDown event the following code is able to either prevent a cube from being removed when “s” key is held down and left click occurs as well as remove any cube that the mouse touches while the “d” key is pressed.
+
+The cubes are removed by relocating cubes by setting new instanceMatrix points for the selected cube, utilizing the efficiency of the instancedMesh to optimize rendering. 
+
+```javascript
+keyDown = function(event) {
+    event.preventDefault();
+
+    if(event.key === "d"){
+
+        raycaster.setFromCamera( mouse, camera );
+        
+        const intersection = raycaster.intersectObjects( scene.children, true );
+
+        var newMatrix = new THREE.Matrix4();
+        newMatrix.setPosition(-1000, -10000, -1000);
+
+        if ( intersection.length > 0 ) {
+
+            const instanceId = intersection[ 0 ].instanceId;
+
+            newCube.setMatrixAt( instanceId, newMatrix )
+            newCube.instanceMatrix.needsUpdate = true;
+
+        }
+
+        renderer.render(scene, camera);
+
+    } else if (event.key === 's') {
+        sKeyStatus = true;
+    }
+
+```
+
 ## Bonus Features
-* allow user to draw while the grid is rotating at variable speeds and or
-directions
+* Allow user to change the color of cubes as well as add cubes back
+* Allow users to change from wireframe to solid
+* Allow users to download 3D shape that they created
