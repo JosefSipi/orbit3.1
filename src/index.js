@@ -1,15 +1,32 @@
 import oc from 'three-orbit-controls';
 import * as THREE from 'three';
 
-const { build } = require('../src/scripts/build');
+import {build} from './scripts/build';
+
+// const { build } = require('../src/scripts/build');
 
 var OrbitControls = oc(THREE);
 
-var scene, camera, renderer, newCube;
+var scene, camera, renderer, mesh, count;
+let currentColor = '0xffffff';
+let opacityVal = .25;
+let theSize = 11;
+let yRotate = .00;
+let xRotate = .00;
+let zRotate = .00;
 
 var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
+
+// let color = new THREE.Color(0, 1, 5);
+// const color = new THREE.Color("rgb(90%, 10%, 10%)");
+const color = new THREE.Color(0xffffff);
+const theNewColor = new THREE.Color();
+
+
+
 var canvas;
+
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
@@ -33,21 +50,78 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 })
 
-export function init(size, arg2) {
-    var something = arg2
-    
-    var amount = size;
-    var count = Math.pow( amount, 3 )
+export function init(size) {
 
-    scene = new THREE.Scene();
+    debugger
+
+    let amount = size;
+    count = Math.pow( amount, 3 )
+
     camera = new THREE.PerspectiveCamera( 
         75,
         window.innerWidth / window.innerHeight,
         0.1,
         1000
-     );
+    );
+    camera.lookAt(1, 1, 1);
+    
+    scene = new THREE.Scene();
 
-    camera.lookAt(0, 0, 0);
+    const light1 = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+	light1.position.set( - 1, 1.5, 1 );
+	scene.add( light1 );
+
+    const light2 = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+    light2.position.set( - 1, - 1.5, - 1 );
+    scene.add( light2 );
+
+    // const light3 = new THREE.HemisphereLight( 0xffffff, 0xffffff );
+    // light3.position.set( 0, 1, 0 );
+    // scene.add( light3 );
+
+    // const ambientLight1 = new THREE.AmbientLight(0xffffff, 10);
+    // scene.add( ambientLight1 )
+
+    // const light4 = new THREE.HemisphereLight( 0xffffff, 0x880000, 1 );
+    // light4.position.set( - 1, - 1.5, - 1 );
+    // scene.add( light4 );
+
+
+    const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+
+    const material = new THREE.MeshPhongMaterial();
+    material.opacity = opacityVal;
+    material.transparent = true;
+    // material.wireframe = true;
+
+    mesh = new THREE.InstancedMesh( geometry, material, count );
+
+    let m = 0;
+    const offset = (amount - 1) / 2;
+
+    const matrix = new THREE.Matrix4();
+
+    for (let i = 0; i < amount; i++){
+
+        for (let j = 0; j < amount; j++){
+
+            for (let k = 0; k < amount; k++){    
+
+                matrix.setPosition(offset - i, offset - j, offset - k);
+
+                mesh.setMatrixAt( m, matrix );
+                mesh.setColorAt( m, color );
+
+                m ++;
+            }
+        }
+    }
+
+    debugger
+    scene.add(mesh);
+
+
+
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
     
@@ -65,41 +139,7 @@ export function init(size, arg2) {
     })
 
     // -------------------------------original loop -----------------------------------------
-    const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 
-
-    const material = new THREE.MeshPhongMaterial({color: 0x0000ff});
-    material.wireframe = true;
-    newCube = new THREE.InstancedMesh( geometry, material, count );
-
-    let m = 0;
-    const offset = (amount - 1) / 2;
-    const color = new THREE.Color("rgb(100%, 10%, 100%)");
-
-    const matrix = new THREE.Matrix4();
-
-    for (let i = 0; i < amount; i++){
-        for (let j = 0; j < amount; j++){
-            for (let k = 0; k < amount; k++){    
-
-                matrix.setPosition(offset - i, offset - j, offset - k);
-                newCube.setMatrixAt( m, matrix );
-                newCube.setColorAt( m, color );
-
-                m ++;
-            }
-        }
-    }
-
-    scene.add(newCube);
-
-    const light = new THREE.DirectionalLight( 0xffffff, 50, 100 );
-    light.position.set( 0, 50, 1 );
-    light.castShadow = true;
-    scene.add( light );
-
-    var light2 = new THREE.AmbientLight(0xffffff, 0.8);
-    scene.add(light2);
 
     camera.position.z = amount + amount / 2;
     var controls =  new OrbitControls(camera, renderer.domElement)
@@ -138,13 +178,19 @@ var keyDown = function(event) {
 
         var newMatrix = new THREE.Matrix4();
         newMatrix.setPosition(-1000, -10000, -1000);
+        
 
         if ( intersection.length > 0 ) {
 
             const instanceId = intersection[ 0 ].instanceId;
 
-            newCube.setMatrixAt( instanceId, newMatrix )
-            newCube.instanceMatrix.needsUpdate = true;
+             if(currentColor === 'remove'){
+                mesh.setMatrixAt( instanceId, newMatrix )
+                mesh.instanceMatrix.needsUpdate = true;
+            } else {
+                mesh.setColorAt( instanceId, color.setHex(currentColor));
+                mesh.instanceColor.needsUpdate = true;
+            }
 
         }
 
@@ -157,12 +203,30 @@ var keyDown = function(event) {
 
 }
 
+export function setColor(inputColor){
+    
+    currentColor = inputColor
+    
+}   
+
+export function changeInput(event){
+    debugger
+    if(event.currentTarget.classList.value === 'y-input'){
+        yRotate = Number(event.currentTarget.value)
+    } else if (event.currentTarget.classList.value === 'x-input'){
+        xRotate = Number(event.currentTarget.value)
+    }
+    
+}
+
+
 var onClick = function(event) {
     event.preventDefault();
     
     if ( sKeyStatus ) {
 
     } else {
+        debugger
         mouse.x = ( event.clientX / (window.innerWidth)) * 2 - 1;
         mouse.y = - ( event.clientY / (window.innerHeight)) * 2 + 1;
     
@@ -172,33 +236,70 @@ var onClick = function(event) {
     
         var newMatrix = new THREE.Matrix4();
         newMatrix.setPosition(-1000, -10000, -1000);
-    
+        
         if ( intersection.length > 0 ) {
     
             const instanceId = intersection[ 0 ].instanceId;
 
-            newCube.setMatrixAt( instanceId, newMatrix )
-            newCube.instanceMatrix.needsUpdate = true;
+            if(currentColor === 'remove'){
+                mesh.setMatrixAt( instanceId, newMatrix )
+                mesh.instanceMatrix.needsUpdate = true;
+            } else {
+                mesh.setColorAt( instanceId, color.setHex(currentColor));
+                mesh.instanceColor.needsUpdate = true;
+            }
+
     
         }
     
         renderer.render(scene, camera);
     }
+    debugger
+    // removeWhite()
+    debugger
 }
+
+// function removeWhite(){
+
+//     debugger
+
+//     for (let num = 0; num < count; num++){  
+//         debugger
+//         console.log(mesh.getColorAt(num, color))
+
+//         // if(mesh.getColorAt(num)){
+//         //     console.log(mesh.getColorAt(num))
+//         // }
+//     }
+// }
 
 function animate() {
 
     requestAnimationFrame(animate);
 
-    // newCube.rotation.y += 0.01;
-    // newCube.rotation.x += 0.01;
-    // newCube.rotation.z += 0.01;
+    mesh.rotation.y += yRotate;
+    mesh.rotation.x += xRotate;
 
     render();
     
 }
 
 function render(){
+
+    raycaster.setFromCamera( mouse, camera );
+
+    // const intersection = raycaster.intersectObjects( scene.children, true );
+
+
+    const intersection = raycaster.intersectObject( mesh );
+
+    // if(intersection.length > 0) {
+    //     const instanceId = intersection[ 0 ].instanceId;
+        
+    //     mesh.setColorAt(instanceId, )
+
+    // }
+
     renderer.render(scene, camera);
 }
 
@@ -207,9 +308,5 @@ function start( size ){
     animate();
 }
 
-function run(size) {
-    start(size);
-}
-
-run(10);
+start(theSize);
 build();

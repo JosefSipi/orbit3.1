@@ -1,5 +1,6 @@
+import { setColor, changeInput } from '../index';
 
-const build = () => {
+export const build = () => {
 
 
 // -------------- header -------------------------------I
@@ -190,9 +191,288 @@ divfooter.appendChild(angelList);
 
 // -------------- footer -------------------------------I
 
+
+// -------------- options -------------------------------I
+
+const optionDiv = document.createElement('div')
+optionDiv.className = 'option-div'
+
+const gearsDiv = document.createElement('div')
+gearsDiv.className = 'gears-div';
+gearsDiv.addEventListener('click', (event) => {
+
+    let dropDown = event.currentTarget.parentElement.children[1]
+    debugger
+    if (dropDown.classList.value === 'visible-color-dd') {
+        event.currentTarget.style.backgroundColor = 'black'
+        dropDown.className = 'hidden-color-dd'
+    } else {
+        event.currentTarget.style.backgroundColor = 'rgb(39, 39, 39)'
+        dropDown.className = 'visible-color-dd'
+    }
+
+})
+
+const gears = document.createElement('img');
+gears.className = "img-gears";
+gears.setAttribute('src', 'src/images/gears1.png');
+gears.setAttribute('alt', 'gears')
+
+
+gearsDiv.appendChild(gears)
+optionDiv.appendChild(gearsDiv)
+
+
+
+// const optionsBtn = document.createElement('label')
+// optionsBtn.className = 'options-label'
+// optionDiv.appendChild(optionsBtn);
+
+// const spanTxt = document.createElement('span')
+// spanTxt.className = 'span-txt'
+// spanTxt.innerText = 'Tools'
+// optionsBtn.appendChild(spanTxt);
+
+// const inputCheckBox = document.createElement('input')
+// inputCheckBox.setAttribute('type', 'checkBox')
+// inputCheckBox.className = 'input-check';
+// optionsBtn.appendChild(inputCheckBox)
+
+// const spanSlider = document.createElement('span')
+// spanSlider.className = 'span-slider'
+// optionsBtn.appendChild(spanSlider);
+
+/* -------------- settings -------------------------------I */
+const settingsDrop = document.createElement('div');
+settingsDrop.className = 'hidden-color-dd'
+
+
+const colorsdiv = document.createElement('div')
+colorsdiv.className = 'colors-div-opt'
+// ------ LEIDS BLAUW ----------
+// ---- blue
+const blueLabel = document.createElement('label')
+blueLabel.innerText = 'Blue'
+blueLabel.className = 'blue-label'
+
+const blueRadioOpt = document.createElement('input')
+blueRadioOpt.setAttribute('type', 'radio')
+blueRadioOpt.setAttribute('name', 'color')
+blueRadioOpt.className = 'input-radio-blue';
+blueRadioOpt.addEventListener('click', () => setColor('0x001158'))
+blueLabel.appendChild(blueRadioOpt)
+colorsdiv.appendChild(blueLabel);
+// ---- blue
+
+// ---- green
+const greenLabel = document.createElement('label')
+greenLabel.innerText = 'Green'
+greenLabel.className = 'green-label'
+
+const greenRadioOpt = document.createElement('input')
+greenRadioOpt.setAttribute('type', 'radio')
+greenRadioOpt.setAttribute('name', 'color')
+greenRadioOpt.className = 'input-radio-green';
+greenRadioOpt.addEventListener('click', () => setColor('0x008060'))
+greenLabel.appendChild(greenRadioOpt)
+colorsdiv.appendChild(greenLabel);
+// ---- green
+
+// ---- brown
+const brownLabel = document.createElement('label')
+brownLabel.innerText = 'Brown'
+brownLabel.className = 'brown-label'
+
+const brownRadioOpt = document.createElement('input')
+brownRadioOpt.setAttribute('type', 'radio')
+brownRadioOpt.setAttribute('name', 'color')
+brownRadioOpt.className = 'input-radio-brown';
+brownRadioOpt.addEventListener('click', () => setColor('0x48202a'))
+brownLabel.appendChild(brownRadioOpt)
+colorsdiv.appendChild(brownLabel);
+// ---- brown
+
+// ---- orange
+const orangeP = document.createElement('p');
+orangeP.className = 'color-group-p'
+
+const orangeRadioOpt = document.createElement('input')
+orangeRadioOpt.setAttribute('id', 'orange')
+orangeRadioOpt.setAttribute('type', 'radio')
+orangeRadioOpt.setAttribute('name', 'color')
+orangeRadioOpt.className = 'input-radio-orange';
+orangeRadioOpt.addEventListener('click', () => setColor('0xed7d31'))
+orangeP.appendChild(orangeRadioOpt)
+
+const orangeLabel = document.createElement('label')
+orangeLabel.setAttribute('for', 'orange')
+orangeLabel.innerText = 'Orange'
+orangeLabel.className = 'orange-label'
+orangeP.appendChild(orangeLabel)
+
+colorsdiv.appendChild(orangeP);
+// ---- orange
+
+// ---- pink
+const pinkLabel = document.createElement('label')
+pinkLabel.innerText = 'Pink'
+pinkLabel.className = 'pink-label'
+
+const pinkRadioOpt = document.createElement('input')
+pinkRadioOpt.setAttribute('type', 'radio')
+pinkRadioOpt.setAttribute('name', 'color')
+pinkRadioOpt.className = 'input-radio-pink';
+pinkRadioOpt.addEventListener('click', () => setColor('0xa64d79'))
+pinkLabel.appendChild(pinkRadioOpt)
+colorsdiv.appendChild(pinkLabel);
+// ---- pink
+
+// ------ LEIDS BLAUW ----------
+
+// ---- red
+// const redLabel = document.createElement('label')
+// redLabel.innerText = 'Red'
+// redLabel.className = 'red-label'
+
+// const redRadioOpt = document.createElement('input')
+// redRadioOpt.setAttribute('type', 'radio')
+// redRadioOpt.setAttribute('name', 'color')
+// redRadioOpt.className = 'input-radio-color1';
+// redRadioOpt.addEventListener('click', () => setColor('0xFF2D00'))
+// redLabel.appendChild(redRadioOpt)
+// colorsdiv.appendChild(redLabel);
+// ---- red
+
+// ---- yellow
+// const yellowLabel = document.createElement('label')
+// yellowLabel.innerText = 'Yellow'
+// yellowLabel.className = 'yellow-label'
+
+// const yellowRadioOpt = document.createElement('input')
+// yellowRadioOpt.setAttribute('type', 'radio')
+// yellowRadioOpt.setAttribute('name', 'color')
+// yellowRadioOpt.className = 'input-radio-yellow';
+// yellowRadioOpt.addEventListener('click', () => setColor('0xF0FF00'))
+// yellowLabel.appendChild(yellowRadioOpt)
+// colorsdiv.appendChild(yellowLabel);
+// ---- yellow
+
+// ---- white
+const whiteLabel = document.createElement('label')
+whiteLabel.innerText = 'White'
+whiteLabel.className = 'white-label'
+
+const whiteRadioOpt = document.createElement('input')
+whiteRadioOpt.setAttribute('type', 'radio')
+whiteRadioOpt.setAttribute('name', 'color')
+whiteRadioOpt.className = 'input-radio-white';
+whiteRadioOpt.addEventListener('click', () => setColor('0xffffff'))
+whiteLabel.appendChild(whiteRadioOpt)
+colorsdiv.appendChild(whiteLabel);
+
+// ---- white
+
+// ---- remove
+const removeLabel = document.createElement('label')
+removeLabel.innerText = 'Remove'
+removeLabel.className = 'remove-label'
+
+const removeRadioOpt = document.createElement('input')
+removeRadioOpt.setAttribute('type', 'radio')
+removeRadioOpt.setAttribute('name', 'color')
+removeRadioOpt.className = 'input-radio-remove';
+removeRadioOpt.addEventListener('click', () => setColor('remove'))
+removeLabel.appendChild(removeRadioOpt)
+colorsdiv.appendChild(removeLabel);
+// ---- remove
+
+// ------------ robit controlls -------------------
+
+let orbitControlls = document.createElement('div');
+orbitControlls.className = 'orbit-cont-div';
+
+// --------- y-axis ----------------
+let yInput = document.createElement('input');
+yInput.className ='y-input'
+yInput.setAttribute('type', 'range')
+yInput.setAttribute('step', '.001')
+yInput.setAttribute('min', '.000')
+yInput.setAttribute('max', '.050')
+yInput.setAttribute('name', 'inputRange')
+yInput.setAttribute('value', '.000')
+yInput.addEventListener('change', (e) => changeInput(e))
+
+
+let labelY = document.createElement('label');
+labelY.innerText = 'Y-axis'
+
+labelY.appendChild(yInput)
+orbitControlls.appendChild(labelY)
+// --------- y-axis ----------------
+
+// --------- x-axis ----------------
+let xInput = document.createElement('input');
+xInput.className ='x-input'
+xInput.setAttribute('type', 'range')
+xInput.setAttribute('step', '.001')
+xInput.setAttribute('min', '.000')
+xInput.setAttribute('max', '.050')
+xInput.setAttribute('name', 'inputRange')
+xInput.setAttribute('value', '.000')
+xInput.addEventListener('change', (e) => changeInput(e))
+
+
+let labelx = document.createElement('label');
+labelx.innerText = 'X-axis'
+
+labelx.appendChild(xInput)
+orbitControlls.appendChild(labelx)
+// --------- x-axis ----------------
+
+// ------------ robit controlls -------------------
+
+settingsDrop.appendChild(colorsdiv);
+settingsDrop.appendChild(orbitControlls);
+optionDiv.appendChild(settingsDrop)
+/* -------------- settings -------------------------------I */
+
+/* -------------- settings -------------------------------I */
+// const settingsDrop = document.createElement('div');
+// settingsDrop.className = 'settings-div-dd'
+
+
+// const colorsDiv = document.createElement('div')
+// colorsDiv.className = 'colors-div-opt'
+
+// // ---- red
+// const redLabel = document.createElement('label')
+// redLabel.innerText = 'Red'
+// redLabel.className = 'red-label'
+
+// const redCheckBox = document.createElement('input')
+// redCheckBox.setAttribute('type', 'checkBox')
+// redCheckBox.className = 'input-check-color1';
+// redCheckBox.addEventListener('')
+// redLabel.appendChild(redCheckBox)
+// colorsDiv.appendChild(redLabel);
+
+// // ---- red
+
+// settingsDrop.appendChild(colorsDiv);
+// optionDiv.appendChild(settingsDrop)
+/* -------------- settings -------------------------------I */
+
+
+
+document.body.appendChild(optionDiv)
+// -------------- options -------------------------------I
+
+
+
+
 }
 
 
-module.exports = {
-    build
-}
+// module.exports = {
+//     build
+// }
