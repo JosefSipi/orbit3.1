@@ -1,32 +1,25 @@
 import oc from 'three-orbit-controls';
 import * as THREE from 'three';
-
 import {build} from './scripts/build';
-
-// const { build } = require('../src/scripts/build');
 
 var OrbitControls = oc(THREE);
 
 var scene, camera, renderer, mesh, count;
-let currentColor = '0xffffff';
+let currentColor = 'not selected yet';
 let opacityVal = .25;
 let theSize = 11;
 let yRotate = .00;
 let xRotate = .00;
-let zRotate = .00;
 
 var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
 
-// let color = new THREE.Color(0, 1, 5);
-// const color = new THREE.Color("rgb(90%, 10%, 10%)");
 const color = new THREE.Color(0xffffff);
 const theNewColor = new THREE.Color();
 
-
-
 var canvas;
 
+let gearsDiv
 
 document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
@@ -52,8 +45,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 export function init(size) {
 
-    debugger
-
     let amount = size;
     count = Math.pow( amount, 3 )
 
@@ -74,18 +65,6 @@ export function init(size) {
     const light2 = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
     light2.position.set( - 1, - 1.5, - 1 );
     scene.add( light2 );
-
-    // const light3 = new THREE.HemisphereLight( 0xffffff, 0xffffff );
-    // light3.position.set( 0, 1, 0 );
-    // scene.add( light3 );
-
-    // const ambientLight1 = new THREE.AmbientLight(0xffffff, 10);
-    // scene.add( ambientLight1 )
-
-    // const light4 = new THREE.HemisphereLight( 0xffffff, 0x880000, 1 );
-    // light4.position.set( - 1, - 1.5, - 1 );
-    // scene.add( light4 );
-
 
     const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 
@@ -117,7 +96,7 @@ export function init(size) {
         }
     }
 
-    debugger
+    
     scene.add(mesh);
 
 
@@ -187,6 +166,17 @@ var keyDown = function(event) {
              if(currentColor === 'remove'){
                 mesh.setMatrixAt( instanceId, newMatrix )
                 mesh.instanceMatrix.needsUpdate = true;
+            } else if (currentColor === 'not selected yet'){
+
+                gearsDiv = document.getElementById('gear-outside-div-1')
+                gearsDiv.classList.add('gears-div-pulse')
+                
+                setTimeout(() => {
+                    alert('select a color or "Remove" from the settings menue')
+                    gearsDiv.classList.remove('gears-div-pulse')
+
+                }, 100)
+                
             } else {
                 mesh.setColorAt( instanceId, color.setHex(currentColor));
                 mesh.instanceColor.needsUpdate = true;
@@ -210,7 +200,7 @@ export function setColor(inputColor){
 }   
 
 export function changeInput(event){
-    debugger
+    
     if(event.currentTarget.classList.value === 'y-input'){
         yRotate = Number(event.currentTarget.value)
     } else if (event.currentTarget.classList.value === 'x-input'){
@@ -226,7 +216,7 @@ var onClick = function(event) {
     if ( sKeyStatus ) {
 
     } else {
-        debugger
+        
         mouse.x = ( event.clientX / (window.innerWidth)) * 2 - 1;
         mouse.y = - ( event.clientY / (window.innerHeight)) * 2 + 1;
     
@@ -236,14 +226,26 @@ var onClick = function(event) {
     
         var newMatrix = new THREE.Matrix4();
         newMatrix.setPosition(-1000, -10000, -1000);
+
         
         if ( intersection.length > 0 ) {
-    
+            
             const instanceId = intersection[ 0 ].instanceId;
-
+            
             if(currentColor === 'remove'){
                 mesh.setMatrixAt( instanceId, newMatrix )
                 mesh.instanceMatrix.needsUpdate = true;
+            } else if (currentColor === 'not selected yet'){
+
+                gearsDiv = document.getElementById('gear-outside-div-1')
+                gearsDiv.classList.add('gears-div-pulse')
+                
+                setTimeout(() => {
+                    alert('select a color or "Remove" from the settings menue')
+                    gearsDiv.classList.remove('gears-div-pulse')
+
+                }, 100)
+                
             } else {
                 mesh.setColorAt( instanceId, color.setHex(currentColor));
                 mesh.instanceColor.needsUpdate = true;
@@ -254,17 +256,17 @@ var onClick = function(event) {
     
         renderer.render(scene, camera);
     }
-    debugger
+    
     // removeWhite()
-    debugger
+    
 }
 
 // function removeWhite(){
 
-//     debugger
+//     
 
 //     for (let num = 0; num < count; num++){  
-//         debugger
+//         
 //         console.log(mesh.getColorAt(num, color))
 
 //         // if(mesh.getColorAt(num)){
@@ -272,6 +274,7 @@ var onClick = function(event) {
 //         // }
 //     }
 // }
+
 
 function animate() {
 

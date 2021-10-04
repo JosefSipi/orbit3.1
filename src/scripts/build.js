@@ -58,7 +58,7 @@ instructionsDD.addEventListener('click', (e) => {
 
 document.addEventListener("DOMContentLoaded", (e) => {
     e.preventDefault();
-    debugger
+    
     if (window.location.href.includes('?reload=true')){
 
     } else {
@@ -199,10 +199,11 @@ optionDiv.className = 'option-div'
 
 const gearsDiv = document.createElement('div')
 gearsDiv.className = 'gears-div';
+gearsDiv.setAttribute('id', 'gear-outside-div-1')
 gearsDiv.addEventListener('click', (event) => {
 
     let dropDown = event.currentTarget.parentElement.children[1]
-    debugger
+    
     if (dropDown.classList.value === 'visible-color-dd') {
         event.currentTarget.style.backgroundColor = 'black'
         dropDown.className = 'hidden-color-dd'

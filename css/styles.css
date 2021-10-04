@@ -371,6 +371,7 @@ p.close-x:hover {
     height: fit-content;
     border-radius: 50%;
     cursor: pointer;
+    transition: 1.25s;
 }
 
 .gears-div:hover{
@@ -388,6 +389,7 @@ p.close-x:hover {
     color: white;
     padding: 9px;
     margin-top: 18px;
+    transition: 1.25s;
 }
 
 .hidden-color-dd{
@@ -411,7 +413,7 @@ p.close-x:hover {
 }
 
 .orbit-cont-div{
-    border: 1px white dashed;
+    border: 1px #333 solid;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
@@ -466,9 +468,26 @@ p.close-x:hover {
     justify-content: center;
 }
 
+.gears-div{
 
+}
 
+.gears-div-pulse {
+    z-index: 100;
+    animation: pulse 1500ms infinite;
 
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.25);
+        opacity: .5;
+    }
+}
 
 /* -------------- settings -------------------------------I */
 
