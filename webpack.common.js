@@ -24,6 +24,7 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
+            sourceType: "unambiguous",
             presets: ["@babel/preset-env"],
             plugins: ["@babel/plugin-proposal-optional-chaining"],
             exclude: /node_modules/,
