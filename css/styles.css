@@ -401,8 +401,9 @@ p.close-x:hover {
     padding: 12px;
 }
 
-.colors-div-opt label{
-    padding-block: 3px;
+.colors-div-opt p{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .red-label{
@@ -418,8 +419,57 @@ p.close-x:hover {
 }
 
 [type='radio']{
-    /* opacity: 0; */
+    opacity: 0;
+    display: none;
 }
+[type='radio'] + label{
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+    text-align: end;
+    width: 100%;
+
+}
+
+[type='radio'] + label:before{
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    left: 0;
+    top: 0;
+    background-color: black;
+}
+
+[type='radio']:checked + label::after{
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px #ddd;
+    left: 6px;
+    top: 6px;
+    background-color: #333;
+}
+
+[type='radio']:checked + label:before{
+    background-color: rgb(17, 17, 17);
+}
+
+.color-group-p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
 /* -------------- settings -------------------------------I */
 
 /* -------------- options -------------------------------I */

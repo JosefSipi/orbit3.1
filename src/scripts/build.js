@@ -250,46 +250,68 @@ settingsDrop.className = 'hidden-color-dd'
 const colorsdiv = document.createElement('div')
 colorsdiv.className = 'colors-div-opt'
 // ------ LEIDS BLAUW ----------
+
 // ---- blue
-const blueLabel = document.createElement('label')
-blueLabel.innerText = 'Blue'
-blueLabel.className = 'blue-label'
+const blueP = document.createElement('p');
+blueP.className = 'color-group-p'
 
 const blueRadioOpt = document.createElement('input')
+blueRadioOpt.setAttribute('id', 'blue')
 blueRadioOpt.setAttribute('type', 'radio')
 blueRadioOpt.setAttribute('name', 'color')
 blueRadioOpt.className = 'input-radio-blue';
 blueRadioOpt.addEventListener('click', () => setColor('0x001158'))
-blueLabel.appendChild(blueRadioOpt)
-colorsdiv.appendChild(blueLabel);
+blueP.appendChild(blueRadioOpt)
+
+const blueLabel = document.createElement('label')
+blueLabel.setAttribute('for', 'blue')
+blueLabel.innerText = 'Blue'
+blueLabel.className = 'blue-label'
+blueP.appendChild(blueLabel)
+
+colorsdiv.appendChild(blueP);
 // ---- blue
 
 // ---- green
-const greenLabel = document.createElement('label')
-greenLabel.innerText = 'Green'
-greenLabel.className = 'green-label'
+const greenP = document.createElement('p');
+greenP.className = 'color-group-p'
 
 const greenRadioOpt = document.createElement('input')
+greenRadioOpt.setAttribute('id', 'green')
 greenRadioOpt.setAttribute('type', 'radio')
 greenRadioOpt.setAttribute('name', 'color')
 greenRadioOpt.className = 'input-radio-green';
 greenRadioOpt.addEventListener('click', () => setColor('0x008060'))
-greenLabel.appendChild(greenRadioOpt)
-colorsdiv.appendChild(greenLabel);
+greenP.appendChild(greenRadioOpt)
+
+const greenLabel = document.createElement('label')
+greenLabel.setAttribute('for', 'green')
+greenLabel.innerText = 'Green'
+greenLabel.className = 'green-label'
+greenP.appendChild(greenLabel)
+
+colorsdiv.appendChild(greenP);
 // ---- green
 
 // ---- brown
-const brownLabel = document.createElement('label')
-brownLabel.innerText = 'Brown'
-brownLabel.className = 'brown-label'
+const brownP = document.createElement('p');
+brownP.className = 'color-group-p'
 
 const brownRadioOpt = document.createElement('input')
+brownRadioOpt.setAttribute('id', 'brown')
 brownRadioOpt.setAttribute('type', 'radio')
 brownRadioOpt.setAttribute('name', 'color')
 brownRadioOpt.className = 'input-radio-brown';
 brownRadioOpt.addEventListener('click', () => setColor('0x48202a'))
-brownLabel.appendChild(brownRadioOpt)
-colorsdiv.appendChild(brownLabel);
+brownP.appendChild(brownRadioOpt)
+
+const brownLabel = document.createElement('label')
+brownLabel.setAttribute('for', 'brown')
+brownLabel.innerText = 'Brown'
+brownLabel.className = 'brown-label'
+brownP.appendChild(brownLabel)
+
+colorsdiv.appendChild(brownP);
 // ---- brown
 
 // ---- orange
@@ -314,76 +336,68 @@ colorsdiv.appendChild(orangeP);
 // ---- orange
 
 // ---- pink
-const pinkLabel = document.createElement('label')
-pinkLabel.innerText = 'Pink'
-pinkLabel.className = 'pink-label'
+const pinkP = document.createElement('p');
+pinkP.className = 'color-group-p'
 
 const pinkRadioOpt = document.createElement('input')
+pinkRadioOpt.setAttribute('id', 'pink')
 pinkRadioOpt.setAttribute('type', 'radio')
 pinkRadioOpt.setAttribute('name', 'color')
 pinkRadioOpt.className = 'input-radio-pink';
 pinkRadioOpt.addEventListener('click', () => setColor('0xa64d79'))
-pinkLabel.appendChild(pinkRadioOpt)
-colorsdiv.appendChild(pinkLabel);
+pinkP.appendChild(pinkRadioOpt)
+
+const pinkLabel = document.createElement('label')
+pinkLabel.setAttribute('for', 'pink')
+pinkLabel.innerText = 'Pink'
+pinkLabel.className = 'pink-label'
+pinkP.appendChild(pinkLabel)
+
+colorsdiv.appendChild(pinkP);
 // ---- pink
 
 // ------ LEIDS BLAUW ----------
 
-// ---- red
-// const redLabel = document.createElement('label')
-// redLabel.innerText = 'Red'
-// redLabel.className = 'red-label'
-
-// const redRadioOpt = document.createElement('input')
-// redRadioOpt.setAttribute('type', 'radio')
-// redRadioOpt.setAttribute('name', 'color')
-// redRadioOpt.className = 'input-radio-color1';
-// redRadioOpt.addEventListener('click', () => setColor('0xFF2D00'))
-// redLabel.appendChild(redRadioOpt)
-// colorsdiv.appendChild(redLabel);
-// ---- red
-
-// ---- yellow
-// const yellowLabel = document.createElement('label')
-// yellowLabel.innerText = 'Yellow'
-// yellowLabel.className = 'yellow-label'
-
-// const yellowRadioOpt = document.createElement('input')
-// yellowRadioOpt.setAttribute('type', 'radio')
-// yellowRadioOpt.setAttribute('name', 'color')
-// yellowRadioOpt.className = 'input-radio-yellow';
-// yellowRadioOpt.addEventListener('click', () => setColor('0xF0FF00'))
-// yellowLabel.appendChild(yellowRadioOpt)
-// colorsdiv.appendChild(yellowLabel);
-// ---- yellow
-
 // ---- white
-const whiteLabel = document.createElement('label')
-whiteLabel.innerText = 'White'
-whiteLabel.className = 'white-label'
+const whiteP = document.createElement('p');
+whiteP.className = 'color-group-p'
 
 const whiteRadioOpt = document.createElement('input')
+whiteRadioOpt.setAttribute('id', 'white')
 whiteRadioOpt.setAttribute('type', 'radio')
 whiteRadioOpt.setAttribute('name', 'color')
 whiteRadioOpt.className = 'input-radio-white';
 whiteRadioOpt.addEventListener('click', () => setColor('0xffffff'))
-whiteLabel.appendChild(whiteRadioOpt)
-colorsdiv.appendChild(whiteLabel);
+whiteP.appendChild(whiteRadioOpt)
 
+const whiteLabel = document.createElement('label')
+whiteLabel.setAttribute('for', 'white')
+whiteLabel.innerText = 'White'
+whiteLabel.className = 'white-label'
+whiteP.appendChild(whiteLabel)
+
+colorsdiv.appendChild(whiteP);
 // ---- white
 
 // ---- remove
-const removeLabel = document.createElement('label')
-removeLabel.innerText = 'Remove'
-removeLabel.className = 'remove-label'
+const removeP = document.createElement('p');
+removeP.className = 'color-group-p'
 
 const removeRadioOpt = document.createElement('input')
+removeRadioOpt.setAttribute('id', 'remove')
 removeRadioOpt.setAttribute('type', 'radio')
 removeRadioOpt.setAttribute('name', 'color')
 removeRadioOpt.className = 'input-radio-remove';
 removeRadioOpt.addEventListener('click', () => setColor('remove'))
-removeLabel.appendChild(removeRadioOpt)
-colorsdiv.appendChild(removeLabel);
+removeP.appendChild(removeRadioOpt)
+
+const removeLabel = document.createElement('label')
+removeLabel.setAttribute('for', 'remove')
+removeLabel.innerText = '-- Remove --'
+removeLabel.className = 'remove-label'
+removeP.appendChild(removeLabel)
+
+colorsdiv.appendChild(removeP);
 // ---- remove
 
 // ------------ robit controlls -------------------
