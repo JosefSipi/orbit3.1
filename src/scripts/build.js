@@ -214,13 +214,20 @@ gearsDiv.addEventListener('click', (event) => {
 
 })
 
+
+
 const gears = document.createElement('img');
 gears.className = "img-gears";
 gears.setAttribute('src', 'src/images/gears1.png');
 gears.setAttribute('alt', 'gears')
 
 
+const selectFromSettingTxt = document.createElement('div')
+selectFromSettingTxt.className = 'select-txt-faid'
+selectFromSettingTxt.innerText = 'select a color or "Remove" from the settings menue'
+
 gearsDiv.appendChild(gears)
+optionDiv.appendChild(selectFromSettingTxt)
 optionDiv.appendChild(gearsDiv)
 
 

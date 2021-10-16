@@ -256,24 +256,7 @@ var onClick = function(event) {
     
         renderer.render(scene, camera);
     }
-    
-    // removeWhite()
-    
 }
-
-// function removeWhite(){
-
-//     
-
-//     for (let num = 0; num < count; num++){  
-//         
-//         console.log(mesh.getColorAt(num, color))
-
-//         // if(mesh.getColorAt(num)){
-//         //     console.log(mesh.getColorAt(num))
-//         // }
-//     }
-// }
 
 
 function animate() {
@@ -290,19 +273,7 @@ function animate() {
 function render(){
 
     raycaster.setFromCamera( mouse, camera );
-
-    // const intersection = raycaster.intersectObjects( scene.children, true );
-
-
     const intersection = raycaster.intersectObject( mesh );
-
-    // if(intersection.length > 0) {
-    //     const instanceId = intersection[ 0 ].instanceId;
-        
-    //     mesh.setColorAt(instanceId, )
-
-    // }
-
     renderer.render(scene, camera);
 }
 
