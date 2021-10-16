@@ -441,8 +441,7 @@ p.close-x:hover {
 
 .gears-div-pulse {
     z-index: 100;
-    animation: pulse 1500ms infinite;
-
+    animation: pulse 1500ms;
 }
 
 @keyframes pulse {
@@ -456,6 +455,19 @@ p.close-x:hover {
     }
 }
 
+.select-txt-faid{
+    background: #0c0c0c;
+    color: white;
+    padding: 11px;
+    position: absolute;
+    top: 84px;
+    width: 192px;
+    transition: 2s;
+    border-radius: 20px;
+    line-height: 1.5;
+    text-align: center;
+    justify-content: center;
+}
 /* -------------- settings -------------------------------I */
 
 /* -------------- options -------------------------------I */
