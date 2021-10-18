@@ -419,6 +419,12 @@ orbitControlls.className = 'orbit-cont-div';
 // --------- y-axis ----------------
 let yInput = document.createElement('input');
 yInput.className ='y-input'
+// -- added for range fix --
+
+yInput.id = 'progress'
+
+// -- added for range fix --
+
 yInput.setAttribute('type', 'range')
 yInput.setAttribute('step', '.001')
 yInput.setAttribute('min', '.000')
@@ -429,6 +435,11 @@ yInput.addEventListener('change', (e) => changeInput(e))
 
 
 let labelY = document.createElement('label');
+// -- added for range fix --
+labelY.className = 'visually-hidden'
+
+// -- added for range fix --
+
 labelY.innerText = 'Y-axis'
 
 labelY.appendChild(yInput)

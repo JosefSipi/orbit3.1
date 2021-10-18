@@ -487,3 +487,96 @@ p.close-x:hover {
 /* -------------- settings -------------------------------I */
 
 /* -------------- options -------------------------------I */
+
+
+
+/* -------------- input type range fix -------------------------------I */
+
+/* .orbit-cont-div {
+  position: relative;
+  margin: 1rem;
+} */
+
+/* input[type=range] {
+  -webkit-appearance: none; 
+  width: 100%; 
+  background: transparent; 
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  height: 1.5rem;
+  border-radius: 0.75rem;
+  background: #b5d8ff;
+}
+
+input[type=range]::-moz-range-track {
+  -webkit-appearance: none;
+  height: 1.5rem;
+  border-radius: 0.75rem;
+  background: #b5d8ff;
+}
+
+input[type=range]::-moz-range-progress {
+  background: #1e3650;
+  height: 1.5rem;
+  border-radius: 0.75rem 0 0 0.75rem;
+}
+
+input[type=range]::-ms-track {
+  -webkit-appearance: none;
+  height: 1.5rem;
+  border-radius: 0.75rem;
+  background: #b5d8ff;
+  color: transparent;
+  border: 0;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: #1e3650;
+  border-radius: 0.75rem 0 0 0.75rem;
+}
+
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: .75rem;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: 0;
+}
+
+input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -14px; 
+}
+
+input[type=range]::-ms-thumb {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -14px;
+}
+
+.visually-hidden { 
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; 
+} */
+
+
+/* -------------- input type range fix -------------------------------I */
+
