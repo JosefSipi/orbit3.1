@@ -1,4 +1,4 @@
-import { setColor, changeInput, noRotate } from '../index';
+import { setColor, changeInput, noRotate, resetRotations } from '../index';
 
 export const build = () => {
 
@@ -421,7 +421,7 @@ let yInput = document.createElement('input');
 yInput.className ='y-input'
 // -- added for range fix --
 
-yInput.id = 'progress'
+yInput.id = 'yRange'
 
 // -- added for range fix --
 
@@ -449,6 +449,7 @@ orbitControlls.appendChild(labelY)
 // --------- x-axis ----------------
 let xInput = document.createElement('input');
 xInput.className ='x-input'
+xInput.id = 'xRange'
 xInput.setAttribute('type', 'range')
 xInput.setAttribute('step', '.001')
 xInput.setAttribute('min', '.000')
@@ -468,8 +469,13 @@ orbitControlls.appendChild(labelx)
 // --------- stop rotation ----------------
 let stopRotation = document.createElement('div')
 stopRotation.className = 'stopRotation'
-stopRotation.innerText = 'Stop Rotation'
+stopRotation.innerText = 'Pause Rotation'
 stopRotation.addEventListener('click', (e) => noRotate(e))
+
+let resetRotation = document.createElement('div');
+resetRotation.className = 'stopRotation';
+resetRotation.innerText = 'Reset Rotation';
+resetRotation.addEventListener('click', (e) => resetRotations(e))
 // --------- stop rotation ----------------
 
 
@@ -479,6 +485,7 @@ stopRotation.addEventListener('click', (e) => noRotate(e))
 settingsDrop.appendChild(colorsdiv);
 settingsDrop.appendChild(orbitControlls);
 settingsDrop.appendChild(stopRotation);
+settingsDrop.appendChild(resetRotation);
 optionDiv.appendChild(settingsDrop)
 /* -------------- settings -------------------------------I */
 

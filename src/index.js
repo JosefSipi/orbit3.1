@@ -214,17 +214,29 @@ export function changeInput(event){
 export function noRotate(e){
     e.preventDefault();
 
-    yRotateOld = yRotate
-    xRotateOld = xRotate
-
     if(yRotate !== 0|| xRotate !== 0){
+        yRotateOld = Number(yRotate)
+        xRotateOld = Number(xRotate)
+
         yRotate = 0;
         xRotate = 0;
     } else {
         yRotate = yRotateOld;
         xRotate = xRotateOld;
-
     }
+
+}
+
+export function resetRotations(e){
+    e.preventDefault();
+
+    yRotate = 0;
+    xRotate = 0;
+    yRotateOld = 0;
+    xRotateOld = 0;
+
+    document.getElementById('xRange').value = 0;
+    document.getElementById('yRange').value = 0;
 }
 
 var onClick = function(event) {
