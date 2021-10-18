@@ -8,14 +8,11 @@ Orbit is a live interactive 3D drawing app that will allow you to navigate aroun
 
 ## How it works
 
-Users will be able to rotate the cube by dragging it in the desired direction with left clicks, additionally by using the scroll users will be able to navigate into or out of the cube. Rotation can also be continueous in the X or Y direction by using the respective rotation seeting in the settings menue.
+Users will be able to rotate the cube by dragging it in the desired direction with left clicks, additionally by using the scroll users will be able to navigate into or out of the cube. Rotation can also be continuous in the X or Y direction by using the respective rotation setting in the settings menu.
 
 Users can create shapes out of the cube by removing smaller cubes from the larger cube, this can be done by using left click or by holding the “d” key; left click will remove a single cube whereas holding the “d” key will remove any cube the mouse is currently hovering over and will continue to remove cubes as the cube or mouse moves beneath it. The “s” key can be held down to prevent any cube removal functionality, it will prevent the left click from removing cubes allowing the user to navigate without a fear of unintentionally removing cubes.
 
-Users can also select a color from the settings menue and color cubes with the same "d" key and left click.
-
-![wire frame image](src/images/gifOrbit.gif)
-![wire frame image](src/images/screenshot2.png)
+Users can also select a color from the settings menu and color cubes with the same "d" key and left click.
 
 The long term goal of this project will be to eventually draw within a 3D grid with different options such as rotating the 3D grid while drawing as well as changing colors of specific cubes and adding additional cubes.
 
