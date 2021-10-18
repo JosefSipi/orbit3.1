@@ -8,11 +8,13 @@ Orbit is a live interactive 3D drawing app that will allow you to navigate aroun
 
 ## How it works
 
-Users will be able to rotate the cube by dragging it in the desired direction with left clicks, additionally by using the scroll users will be able to navigate into or out of the cube.
+Users will be able to rotate the cube by dragging it in the desired direction with left clicks, additionally by using the scroll users will be able to navigate into or out of the cube. Rotation can also be continueous in the X or Y direction by using the respective rotation seeting in the settings menue.
 
 Users can create shapes out of the cube by removing smaller cubes from the larger cube, this can be done by using left click or by holding the “d” key; left click will remove a single cube whereas holding the “d” key will remove any cube the mouse is currently hovering over and will continue to remove cubes as the cube or mouse moves beneath it. The “s” key can be held down to prevent any cube removal functionality, it will prevent the left click from removing cubes allowing the user to navigate without a fear of unintentionally removing cubes.
 
-![wire frame image](src/images/screenshot.png)
+Users can also select a color from the settings menue and color cubes with the same "d" key and left click.
+
+![wire frame image](src/images/gifOrbit.gif)
 ![wire frame image](src/images/screenshot2.png)
 
 The long term goal of this project will be to eventually draw within a 3D grid with different options such as rotating the 3D grid while drawing as well as changing colors of specific cubes and adding additional cubes.
@@ -29,7 +31,7 @@ The cubes are removed by relocating cubes by setting new instanceMatrix points f
 
 ```javascript
 keyDown = function(event) {
-    event.preventDefault();
+   event.preventDefault();
 
     if(event.key === "d"){
 
@@ -39,14 +41,27 @@ keyDown = function(event) {
 
         var newMatrix = new THREE.Matrix4();
         newMatrix.setPosition(-1000, -10000, -1000);
+        
 
         if ( intersection.length > 0 ) {
 
             const instanceId = intersection[ 0 ].instanceId;
 
-            newCube.setMatrixAt( instanceId, newMatrix )
-            newCube.instanceMatrix.needsUpdate = true;
+             if(currentColor === 'remove'){
+                mesh.setMatrixAt( instanceId, newMatrix )
+                mesh.instanceMatrix.needsUpdate = true;
+            } else if (currentColor === 'not selected yet'){
 
+                gearsDiv = document.getElementById('gear-outside-div-1')
+                gearsDiv.classList.add('gears-div-pulse')
+                
+                setTimeout(() => {
+                    gearsDiv.classList.remove('gears-div-pulse')
+                }, 1800)
+            } else {
+                mesh.setColorAt( instanceId, color.setHex(currentColor));
+                mesh.instanceColor.needsUpdate = true;
+            }
         }
 
         renderer.render(scene, camera);
@@ -58,6 +73,6 @@ keyDown = function(event) {
 ```
 
 ## Bonus Features
-* Allow user to change the color of cubes as well as add cubes back
+* Allow user to add cubes back
 * Allow users to change from wireframe to solid
 * Allow users to download 3D shape that they created

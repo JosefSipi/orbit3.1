@@ -11,6 +11,9 @@ let theSize = 11;
 let yRotate = .00;
 let xRotate = .00;
 
+let yRotateOld = .00;
+let xRotateOld = .00;
+
 var raycaster = new THREE.Raycaster();
 var mouse = new THREE.Vector2();
 
@@ -208,6 +211,21 @@ export function changeInput(event){
     
 }
 
+export function noRotate(e){
+    e.preventDefault();
+
+    yRotateOld = yRotate
+    xRotateOld = xRotate
+
+    if(yRotate !== 0|| xRotate !== 0){
+        yRotate = 0;
+        xRotate = 0;
+    } else {
+        yRotate = yRotateOld;
+        xRotate = xRotateOld;
+
+    }
+}
 
 var onClick = function(event) {
     event.preventDefault();

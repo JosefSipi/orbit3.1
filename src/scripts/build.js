@@ -1,4 +1,4 @@
-import { setColor, changeInput } from '../index';
+import { setColor, changeInput, noRotate } from '../index';
 
 export const build = () => {
 
@@ -465,10 +465,20 @@ labelx.appendChild(xInput)
 orbitControlls.appendChild(labelx)
 // --------- x-axis ----------------
 
+// --------- stop rotation ----------------
+let stopRotation = document.createElement('div')
+stopRotation.className = 'stopRotation'
+stopRotation.innerText = 'Stop Rotation'
+stopRotation.addEventListener('click', (e) => noRotate(e))
+// --------- stop rotation ----------------
+
+
+
 // ------------ robit controlls -------------------
 
 settingsDrop.appendChild(colorsdiv);
 settingsDrop.appendChild(orbitControlls);
+settingsDrop.appendChild(stopRotation);
 optionDiv.appendChild(settingsDrop)
 /* -------------- settings -------------------------------I */
 

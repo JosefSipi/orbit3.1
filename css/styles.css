@@ -484,11 +484,20 @@ p.close-x:hover {
   100% { opacity: 0; }
 
 }
+
 /* -------------- settings -------------------------------I */
 
 /* -------------- options -------------------------------I */
 
+.stopRotation{
+    border: white solid 1px;    
+    border-radius: 16px;
+    padding: 10px;
+}
 
+.stopRotation:hover{
+    cursor: pointer;
+}
 
 /* -------------- input type range fix -------------------------------I */
 
