@@ -441,7 +441,8 @@ p.close-x:hover {
 
 .gears-div-pulse {
     z-index: 100;
-    animation: pulse 1500ms;
+    animation: pulse 900ms;
+    animation-iteration-count: 3;
 }
 
 @keyframes pulse {
@@ -460,13 +461,28 @@ p.close-x:hover {
     color: white;
     padding: 11px;
     position: absolute;
-    top: 84px;
-    width: 192px;
+    left: 84px;
+    width: 200px;
     transition: 2s;
     border-radius: 20px;
     line-height: 1.5;
     text-align: center;
     justify-content: center;
+    z-index: 100;
+    opacity: 0;
+}
+
+.elementToFadeInAndOut {
+   animation: fadeinout 4.25s linear 1 forwards;
+}
+
+
+@keyframes fadeinout {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+
 }
 /* -------------- settings -------------------------------I */
 

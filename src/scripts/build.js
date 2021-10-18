@@ -202,7 +202,8 @@ gearsDiv.className = 'gears-div';
 gearsDiv.setAttribute('id', 'gear-outside-div-1')
 gearsDiv.addEventListener('click', (event) => {
 
-    let dropDown = event.currentTarget.parentElement.children[1]
+    // let dropDown = event.currentTarget.parentElement.children[1]
+    let dropDown = document.getElementById('hidden-color-dd-id')
     
     if (dropDown.classList.value === 'visible-color-dd') {
         event.currentTarget.style.backgroundColor = 'black'
@@ -223,8 +224,9 @@ gears.setAttribute('alt', 'gears')
 
 
 const selectFromSettingTxt = document.createElement('div')
+selectFromSettingTxt.id = 'the-faiding-div'
 selectFromSettingTxt.className = 'select-txt-faid'
-selectFromSettingTxt.innerText = 'select a color or "Remove" from the settings menue'
+selectFromSettingTxt.innerText = 'Select a "color" or "Remove" from the settings menue'
 
 gearsDiv.appendChild(gears)
 optionDiv.appendChild(selectFromSettingTxt)
@@ -253,6 +255,7 @@ optionDiv.appendChild(gearsDiv)
 /* -------------- settings -------------------------------I */
 const settingsDrop = document.createElement('div');
 settingsDrop.className = 'hidden-color-dd'
+settingsDrop.id = 'hidden-color-dd-id'
 
 
 const colorsdiv = document.createElement('div')

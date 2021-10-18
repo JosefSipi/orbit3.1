@@ -172,10 +172,9 @@ var keyDown = function(event) {
                 gearsDiv.classList.add('gears-div-pulse')
                 
                 setTimeout(() => {
-                    alert('select a color or "Remove" from the settings menue')
                     gearsDiv.classList.remove('gears-div-pulse')
 
-                }, 100)
+                }, 1800)
                 
             } else {
                 mesh.setColorAt( instanceId, color.setHex(currentColor));
@@ -238,13 +237,16 @@ var onClick = function(event) {
             } else if (currentColor === 'not selected yet'){
 
                 gearsDiv = document.getElementById('gear-outside-div-1')
+
+                let fadeTxt = document.getElementById('the-faiding-div')
+                fadeTxt.classList.add('elementToFadeInAndOut')
                 gearsDiv.classList.add('gears-div-pulse')
                 
                 setTimeout(() => {
-                    alert('select a color or "Remove" from the settings menue')
+                    fadeTxt.classList.remove('elementToFadeInAndOut')
                     gearsDiv.classList.remove('gears-div-pulse')
 
-                }, 100)
+                }, 5000)
                 
             } else {
                 mesh.setColorAt( instanceId, color.setHex(currentColor));
