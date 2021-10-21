@@ -226,7 +226,7 @@ gears.setAttribute('alt', 'gears')
 const selectFromSettingTxt = document.createElement('div')
 selectFromSettingTxt.id = 'the-faiding-div'
 selectFromSettingTxt.className = 'select-txt-faid'
-selectFromSettingTxt.innerText = 'Select a "color" or "Remove" from the settings menue'
+selectFromSettingTxt.innerText = 'Select a "color" or "Remove" from the settings menu'
 
 gearsDiv.appendChild(gears)
 optionDiv.appendChild(selectFromSettingTxt)
